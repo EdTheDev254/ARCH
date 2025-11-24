@@ -15,8 +15,8 @@
       "age": "68-66 Million Years Ago"
     },
     "images": [
-      "/images/tyrannosaurus-rex-0.jpg",
-      "/images/tyrannosaurus-rex-1.jpg"
+      "images/tyrannosaurus-rex-0.jpg",
+      "images/tyrannosaurus-rex-1.jpg"
     ]
   },
   {
@@ -35,9 +35,9 @@
       "age": "68-66 Million Years Ago"
     },
     "images": [
-      "/images/triceratops-0.jpg",
-      "/images/triceratops-1.jpg",
-      "/images/triceratops-2.jpg"
+      "images/triceratops-0.jpg",
+      "images/triceratops-1.jpg",
+      "images/triceratops-2.jpg"
     ]
   },
   {
@@ -56,8 +56,8 @@
       "age": "75-71 Million Years Ago"
     },
     "images": [
-      "/images/velociraptor-0.PNG",
-      "/images/velociraptor-1.png"
+      "images/velociraptor-0.PNG",
+      "images/velociraptor-1.png"
     ]
   },
   {
@@ -76,8 +76,8 @@
       "age": "99-93.5 Million Years Ago"
     },
     "images": [
-      "/images/spinosaurus-0.png",
-      "/images/spinosaurus-1.png"
+      "images/spinosaurus-0.png",
+      "images/spinosaurus-1.png"
     ]
   },
   {
@@ -96,8 +96,8 @@
       "age": "68-66 Million Years Ago"
     },
     "images": [
-      "/images/ankylosaurus-0.png",
-      "/images/ankylosaurus-1.png"
+      "images/ankylosaurus-0.png",
+      "images/ankylosaurus-1.png"
     ]
   },
   {
@@ -116,8 +116,8 @@
       "age": "76.5-73 Million Years Ago"
     },
     "images": [
-      "/images/parasaurolophus-0.svg",
-      "/images/parasaurolophus-1.png"
+      "images/parasaurolophus-0.svg",
+      "images/parasaurolophus-1.png"
     ]
   },
   {
@@ -136,8 +136,8 @@
       "age": "72-69.9 Million Years Ago"
     },
     "images": [
-      "/images/carnotaurus-0.jpg",
-      "/images/carnotaurus-1.png"
+      "images/carnotaurus-0.jpg",
+      "images/carnotaurus-1.png"
     ]
   },
   {
@@ -156,8 +156,8 @@
       "age": "86-84.5 Million Years Ago"
     },
     "images": [
-      "/images/pteranodon-0.jpg",
-      "/images/pteranodon-1.jpg"
+      "images/pteranodon-0.jpg",
+      "images/pteranodon-1.jpg"
     ]
   },
   {
@@ -176,8 +176,8 @@
       "age": "155-150 Million Years Ago"
     },
     "images": [
-      "/images/stegosaurus-0.png",
-      "/images/stegosaurus-2.png"
+      "images/stegosaurus-0.png",
+      "images/stegosaurus-2.png"
     ]
   },
   {
@@ -196,8 +196,8 @@
       "age": "154-153 Million Years Ago"
     },
     "images": [
-      "/images/brachiosaurus-0.jpg",
-      "/images/brachiosaurus-2.png"
+      "images/brachiosaurus-0.jpg",
+      "images/brachiosaurus-2.png"
     ]
   },
   {
@@ -216,7 +216,7 @@
       "age": "155-145 Million Years Ago"
     },
     "images": [
-      "/images/allosaurus-0.png"
+      "images/allosaurus-0.png"
     ]
   },
   {
@@ -235,8 +235,8 @@
       "age": "154-152 Million Years Ago"
     },
     "images": [
-      "/images/diplodocus-0.png",
-      "/images/diplodocus-1.jpg"
+      "images/diplodocus-0.png",
+      "images/diplodocus-1.jpg"
     ]
   },
   {
@@ -255,7 +255,7 @@
       "age": "150 Million Years Ago"
     },
     "images": [
-      "/images/archaeopteryx-0.jpg"
+      "images/archaeopteryx-0.jpg"
     ]
   },
   {
@@ -274,8 +274,8 @@
       "age": "126-125 Million Years Ago"
     },
     "images": [
-      "/images/iguanodon-0.svg",
-      "/images/iguanodon-1.jpg"
+      "images/iguanodon-0.svg",
+      "images/iguanodon-1.jpg"
     ]
   },
   {
@@ -294,7 +294,7 @@
       "age": "295-272 Million Years Ago"
     },
     "images": [
-      "/images/dimetrodon-0.jpg"
+      "images/dimetrodon-0.jpg"
     ]
   },
   {
@@ -313,8 +313,8 @@
       "age": "400,000 - 4,000 Years Ago"
     },
     "images": [
-      "/images/woolly-mammoth-0.jpg",
-      "/images/woolly-mammoth-1.jpg"
+      "images/woolly-mammoth-0.jpg",
+      "images/woolly-mammoth-1.jpg"
     ]
   },
   {
@@ -333,9 +333,9 @@
       "age": "2.5 Million - 10,000 Years Ago"
     },
     "images": [
-      "/images/smilodon-0.jpg",
-      "/images/smilodon-1.jpg",
-      "/images/smilodon-2.JPG"
+      "images/smilodon-0.jpg",
+      "images/smilodon-1.jpg",
+      "images/smilodon-2.JPG"
     ]
   },
   {
@@ -354,7 +354,7 @@
       "age": "382-358 Million Years Ago"
     },
     "images": [
-      "/images/dunkleosteus-0.jpg"
+      "images/dunkleosteus-0.jpg"
     ]
   },
   {
@@ -373,8 +373,8 @@
       "age": "508 Million Years Ago"
     },
     "images": [
-      "/images/anomalocaris-0.png",
-      "/images/anomalocaris-1.jpg"
+      "images/anomalocaris-0.png",
+      "images/anomalocaris-1.jpg"
     ]
   },
   {
@@ -393,8 +393,8 @@
       "age": "23-3.6 Million Years Ago"
     },
     "images": [
-      "/images/megalodon-0.png",
-      "/images/megalodon-1.jpg"
+      "images/megalodon-0.png",
+      "images/megalodon-1.jpg"
     ]
   },
   {
@@ -413,9 +413,9 @@
       "age": "Extinct 1662"
     },
     "images": [
-      "/images/dodo-0.png",
-      "/images/dodo-1.jpeg",
-      "/images/dodo-2.jpg"
+      "images/dodo-0.png",
+      "images/dodo-1.jpeg",
+      "images/dodo-2.jpg"
     ]
   },
   {
@@ -434,7 +434,7 @@
       "age": "60-58 Million Years Ago"
     },
     "images": [
-      "/images/titanoboa-0.jpg"
+      "images/titanoboa-0.jpg"
     ]
   },
   {
@@ -453,7 +453,7 @@
       "age": "70-66 Million Years Ago"
     },
     "images": [
-      "/images/mosasaurus-0.jpg"
+      "images/mosasaurus-0.jpg"
     ]
   },
   {
@@ -472,7 +472,7 @@
       "age": "2.5 Million - 10,000 Years Ago"
     },
     "images": [
-      "/images/glyptodon-0.jpg"
+      "images/glyptodon-0.jpg"
     ]
   },
   {
@@ -491,7 +491,7 @@
       "age": "400,000 - 8,000 Years Ago"
     },
     "images": [
-      "/images/megatherium-0.jpg"
+      "images/megatherium-0.jpg"
     ]
   },
   {
@@ -510,7 +510,7 @@
       "age": "199-175 Million Years Ago"
     },
     "images": [
-      "/images/plesiosaurus-0.png"
+      "images/plesiosaurus-0.png"
     ]
   },
   {
@@ -529,7 +529,7 @@
       "age": "68-66 Million Years Ago"
     },
     "images": [
-      "/images/quetzalcoatlus-0.png"
+      "images/quetzalcoatlus-0.png"
     ]
   },
   {
@@ -548,7 +548,7 @@
       "age": "Extinct 1936"
     },
     "images": [
-      "/images/thylacine-0.png"
+      "images/thylacine-0.png"
     ]
   },
   {
@@ -567,7 +567,7 @@
       "age": "70-66 Million Years Ago"
     },
     "images": [
-      "/images/pachycephalosaurus-0.jpg"
+      "images/pachycephalosaurus-0.jpg"
     ]
   },
   {
@@ -586,7 +586,7 @@
       "age": "82-73 Million Years Ago"
     },
     "images": [
-      "/images/deinosuchus-0.png"
+      "images/deinosuchus-0.png"
     ]
   },
   {
@@ -605,7 +605,7 @@
       "age": "315-299 Million Years Ago"
     },
     "images": [
-      "/images/arthropleura-0.png"
+      "images/arthropleura-0.png"
     ]
   }
 ]
