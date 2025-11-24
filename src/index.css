@@ -213,20 +213,25 @@ h1 {
 
 /* Search Bar */
 .search-wrapper {
-  position: -webkit-sticky;
-  position: sticky;
-  top: 0;
+  position: fixed;
+  top: 70px;
+  left: 0;
+  right: 0;
   z-index: 100;
   background: linear-gradient(to bottom,
       var(--bg-color) 0%,
-      var(--bg-color) 60%,
-      rgba(10, 10, 10, 0.98) 75%,
-      rgba(10, 10, 10, 0.8) 90%,
+      var(--bg-color) 50%,
+      rgba(10, 10, 10, 0.98) 70%,
+      rgba(10, 10, 10, 0.9) 85%,
       rgba(10, 10, 10, 0) 100%);
-  padding: 1.5rem 0 4rem;
-  margin-bottom: -2.5rem;
+  padding: 1rem 0 3rem;
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
+  pointer-events: none;
+}
+
+.search-wrapper>* {
+  pointer-events: auto;
 }
 
 .search-container {
