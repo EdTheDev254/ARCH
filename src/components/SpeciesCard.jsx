@@ -26,6 +26,7 @@ const SpeciesCard = ({ species, index }) => {
                         style={{
                             width: '100%',
                             height: '100%',
+                            maxWidth: '100%',
                             objectFit: 'cover',
                             filter: 'grayscale(20%) contrast(110%)'
                         }}

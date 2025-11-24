@@ -20,7 +20,7 @@ const Navbar = () => {
             ARCH<span style={{ color: 'var(--accent-color)' }}>.</span>LOG
           </span>
         </Link>
-        <div style={{ display: 'flex', gap: '2rem', fontSize: '0.9rem', textTransform: 'uppercase', letterSpacing: '1px' }}>
+        <div className="nav-links" style={{ textTransform: 'uppercase', letterSpacing: '1px' }}>
           <Link to="/" style={{ color: 'var(--text-primary)' }}>Collection</Link>
           <span style={{ color: 'var(--text-secondary)', cursor: 'not-allowed' }}>Timeline</span>
           <span style={{ color: 'var(--text-secondary)', cursor: 'not-allowed' }}>About</span>
