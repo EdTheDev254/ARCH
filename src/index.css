@@ -213,16 +213,20 @@ h1 {
 
 /* Search Bar */
 .search-wrapper {
+  position: -webkit-sticky;
   position: sticky;
   top: 0;
   z-index: 100;
   background: linear-gradient(to bottom,
       var(--bg-color) 0%,
-      var(--bg-color) 70%,
-      rgba(10, 10, 10, 0.95) 85%,
+      var(--bg-color) 60%,
+      rgba(10, 10, 10, 0.98) 75%,
+      rgba(10, 10, 10, 0.8) 90%,
       rgba(10, 10, 10, 0) 100%);
-  padding: 1rem 0 3rem;
-  margin-bottom: -2rem;
+  padding: 1.5rem 0 4rem;
+  margin-bottom: -2.5rem;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
 .search-container {
