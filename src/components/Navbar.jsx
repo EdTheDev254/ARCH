@@ -9,7 +9,12 @@ const Navbar = () => {
       animate={{ y: 0 }}
       transition={{ duration: 0.8, ease: "easeOut" }}
       style={{
-        padding: '2rem 0',
+        position: 'sticky',
+        top: 0,
+        zIndex: 1000,
+        backgroundColor: 'rgba(10, 10, 10, 0.8)',
+        backdropFilter: 'blur(10px)',
+        padding: '1rem 0',
         marginBottom: '2rem',
         borderBottom: '1px solid rgba(255,255,255,0.1)'
       }}
