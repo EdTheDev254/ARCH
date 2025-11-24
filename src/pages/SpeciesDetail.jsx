@@ -12,9 +12,14 @@ const SpeciesDetail = () => {
 
     return (
         <div className="container" style={{ paddingBottom: '4rem' }}>
-            <Link to={`/category/${species.period}`} style={{ display: 'inline-block', marginBottom: '2rem', color: 'var(--text-secondary)', textTransform: 'uppercase', fontSize: '0.8rem', letterSpacing: '1px' }}>
-                ← Back to {species.period}
-            </Link>
+            <div style={{ display: 'flex', gap: '1.5rem', marginBottom: '2rem', flexWrap: 'wrap' }}>
+                <Link to={`/category/${species.period}`} style={{ color: 'var(--text-secondary)', textTransform: 'uppercase', fontSize: '0.8rem', letterSpacing: '1px' }}>
+                    ← Back to {species.period}
+                </Link>
+                <Link to="/" style={{ color: 'var(--text-secondary)', textTransform: 'uppercase', fontSize: '0.8rem', letterSpacing: '1px' }}>
+                    ← All Periods
+                </Link>
+            </div>
 
             <div className="detail-grid">
                 <motion.div
