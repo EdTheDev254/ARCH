@@ -7,7 +7,7 @@ import SpeciesDetail from './pages/SpeciesDetail';
 
 function App() {
   return (
-    <Router>
+    <Router basename={import.meta.env.BASE_URL}>
       <div className="app">
         <Navbar />
         <Routes>
