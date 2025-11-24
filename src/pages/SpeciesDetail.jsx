@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { resolveImagePath } from '../utils/imagePath';
 import { useParams, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import speciesData from '../data/species.json';
@@ -24,7 +25,7 @@ const SpeciesDetail = () => {
                 >
                     <div style={{ marginBottom: '1rem', borderRadius: '4px', overflow: 'hidden', boxShadow: '0 20px 50px rgba(0,0,0,0.5)', backgroundColor: 'rgba(0,0,0,0.2)', display: 'flex', alignItems: 'center', justifyContent: 'center', height: '500px' }}>
                         <img
-                            src={species.images[selectedImage]}
+                            src={resolveImagePath(species.images[selectedImage])}
                             alt={species.name}
                             style={{
                                 width: '100%',
@@ -51,7 +52,7 @@ const SpeciesDetail = () => {
                                 }}
                             >
                                 <img
-                                    src={img}
+                                    src={resolveImagePath(img)}
                                     alt={`${species.name} ${idx + 1}`}
                                     style={{ width: '100%', height: '80px', objectFit: 'cover', display: 'block' }}
                                 />

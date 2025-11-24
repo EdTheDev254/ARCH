@@ -1,4 +1,5 @@
 import React from 'react';
+import { resolveImagePath } from '../utils/imagePath';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
@@ -21,7 +22,7 @@ const SpeciesCard = ({ species, index }) => {
             >
                 <div style={{ height: '100%', width: '100%' }}>
                     <motion.img
-                        src={species.images[0]}
+                        src={resolveImagePath(species.images[0])}
                         alt={species.name}
                         style={{
                             width: '100%',
