@@ -12,8 +12,8 @@ const SpeciesDetail = () => {
 
     return (
         <div className="container" style={{ paddingBottom: '4rem' }}>
-            <Link to="/" style={{ display: 'inline-block', marginBottom: '2rem', color: 'var(--text-secondary)', textTransform: 'uppercase', fontSize: '0.8rem', letterSpacing: '1px' }}>
-                ← Back to Collection
+            <Link to={`/category/${species.period}`} style={{ display: 'inline-block', marginBottom: '2rem', color: 'var(--text-secondary)', textTransform: 'uppercase', fontSize: '0.8rem', letterSpacing: '1px' }}>
+                ← Back to {species.period}
             </Link>
 
             <div className="detail-grid">
