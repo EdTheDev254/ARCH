@@ -607,5 +607,100 @@
     "images": [
       "/images/arthropleura-0.png"
     ]
+  },
+  {
+    "id": "argentavis",
+    "name": "Argentavis",
+    "scientificName": "Argentavis magnificens",
+    "era": "Miocene",
+    "period": "Neogene",
+    "location": "South America",
+    "description": "The largest flying bird ever discovered, with a wingspan of up to 7 meters (23 ft). This massive bird of prey soared over the Argentinian plains millions of years ago.",
+    "funFact": "It was so large that it likely couldn't flap its wings much and instead relied on soaring like modern condors.",
+    "discovery": {
+      "who": "Kenneth Campbell & Eduardo Tonni",
+      "when": "1979",
+      "where": "La Pampa, Argentina",
+      "age": "6 Million Years Ago"
+    },
+    "images": [
+      "/images/argentavis-0.png"
+    ]
+  },
+  {
+    "id": "basilosaurus",
+    "name": "Basilosaurus",
+    "scientificName": "Basilosaurus cetoides",
+    "era": "Eocene",
+    "period": "Paleogene",
+    "location": "Global Oceans",
+    "description": "Despite its name meaning 'king lizard', this was actually an early whale. It had a serpentine body up to 18 meters long and small vestigial hind legs.",
+    "funFact": "Its scientific name is misleading - it was named before scientists realized it was a mammal, not a reptile.",
+    "discovery": {
+      "who": "Richard Harlan",
+      "when": "1834",
+      "where": "Louisiana, USA",
+      "age": "40-34 Million Years Ago"
+    },
+    "images": [
+      "/images/basilosaurus-0.png"
+    ]
+  },
+  {
+    "id": "giganotosaurus",
+    "name": "Giganotosaurus",
+    "scientificName": "Giganotosaurus carolinii",
+    "era": "Late Cretaceous",
+    "period": "Cretaceous",
+    "location": "South America",
+    "description": "One of the largest known terrestrial carnivores, rivaling T-Rex in size. It had a massive skull and powerful jaws built for hunting large prey.",
+    "funFact": "Its brain was shaped like a banana and was relatively small for its body size.",
+    "discovery": {
+      "who": "Rubén Carolini",
+      "when": "1993",
+      "where": "Patagonia, Argentina",
+      "age": "98-97 Million Years Ago"
+    },
+    "images": [
+      "/images/giganotosaurus-0.jpg"
+    ]
+  },
+  {
+    "id": "elasmosaurus",
+    "name": "Elasmosaurus",
+    "scientificName": "Elasmosaurus platyurus",
+    "era": "Late Cretaceous",
+    "period": "Cretaceous",
+    "location": "North America",
+    "description": "A marine reptile famous for its extremely long neck, which contained over 70 vertebrae - more than any other known animal. It used its neck to hunt fish in ancient seas.",
+    "funFact": "When first described, the head was mistakenly placed on the tail end, a mistake that took years to correct.",
+    "discovery": {
+      "who": "Theophilus Turner",
+      "when": "1867",
+      "where": "Kansas, USA",
+      "age": "80.5 Million Years Ago"
+    },
+    "images": [
+      "/images/elasmosaurus-0.png"
+    ]
+  },
+  {
+    "id": "helicoprion",
+    "name": "Helicoprion",
+    "scientificName": "Helicoprion bessonowi",
+    "era": "Permian",
+    "period": "Permian",
+    "location": "Global Oceans",
+    "description": "A bizarre shark-like fish best known for its unique whorl of teeth that formed a spiral in its lower jaw. It used this unusual structure to slice prey.",
+    "funFact": "For over a century, scientists couldn't figure out where the tooth whorl was located on its body - many thought it was on the snout or dorsal fin!",
+    "discovery": {
+      "who": "Alexander Karpinsky",
+      "when": "1899",
+      "where": "Ural Mountains, Russia",
+      "age": "290-250 Million Years Ago"
+    },
+    "images": [
+      "/images/helicoprion-0.jpg"
+    ]
   }
 ]

@@ -82,7 +82,12 @@ const manualFixes = [
     { id: 'thylacine', index: 0, filename: 'thylacine-0.png', url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Thylacine.png' },
     { id: 'pachycephalosaurus', index: 0, filename: 'pachycephalosaurus-0.jpg', url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Pachycephalosaurus_Reconstruction.jpg' },
     { id: 'deinosuchus', index: 0, filename: 'deinosuchus-0.png', url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Deinosuchus_riograndensis.png' },
-    { id: 'arthropleura', index: 0, filename: 'arthropleura-0.png', url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Arthropleura_reconstruction.png' }
+    { id: 'arthropleura', index: 0, filename: 'arthropleura-0.png', url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Arthropleura_reconstruction.png' },
+    { id: 'argentavis', index: 0, filename: 'argentavis-0.png', url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Argentavismagnificens.png' },
+    { id: 'basilosaurus', index: 0, filename: 'basilosaurus-0.png', url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Basilosaurus_cetoides.png' },
+    { id: 'giganotosaurus', index: 0, filename: 'giganotosaurus-0.jpg', url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Giganotosaurus_BW.jpg' },
+    { id: 'elasmosaurus', index: 0, filename: 'elasmosaurus-0.png', url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Elasmosaurus_platyurus.png' },
+    { id: 'helicoprion', index: 0, filename: 'helicoprion-0.jpg', url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Helicoprion_NT_small.jpg' }
 ];
 
 const processSpecies = async () => {
