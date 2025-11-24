@@ -15,6 +15,19 @@ const SpeciesCard = ({ species, index }) => {
                     height: '400px',
                     borderRadius: '4px',
                     overflow: 'hidden',
+                    cursor: 'pointer',
+                    backgroundColor: 'var(--card-bg)'
+                }}
+            >
+                <div style={{ height: '100%', width: '100%' }}>
+                    <motion.img
+                        src={species.images[0]}
+                        alt={species.name}
+                        style={{
+                            width: '100%',
+                            height: '100%',
+                            maxWidth: '100%',
+                            objectFit: 'cover',
                             filter: 'grayscale(20%) contrast(110%)'
                         }}
                         whileHover={{ scale: 1.05, filter: 'grayscale(0%) contrast(100%)' }}
@@ -47,8 +60,8 @@ const SpeciesCard = ({ species, index }) => {
                         </div>
                     </div>
                 </div>
-            </motion.div >
-        </Link >
+            </motion.div>
+        </Link>
     );
 };
 
