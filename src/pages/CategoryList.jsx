@@ -21,11 +21,14 @@ const CategoryList = () => {
                 style={{ marginBottom: '4rem', textAlign: 'center', paddingTop: '4rem' }}
             >
                 <h1 style={{ marginBottom: '1rem' }}>Extinct <span style={{ color: 'var(--accent-color)' }}>Record</span></h1>
-                <SearchBar />
                 <p style={{ color: 'var(--text-secondary)', maxWidth: '600px', margin: '1rem auto 0' }}>
                     Select a time period to explore the catalog of lost life.
                 </p>
             </motion.div>
+
+            <div className="search-wrapper">
+                <SearchBar />
+            </div>
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', maxWidth: '800px', margin: '0 auto', paddingBottom: '4rem' }}>
                 {periods.map((period, index) => (

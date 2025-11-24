@@ -212,11 +212,24 @@ h1 {
 }
 
 /* Search Bar */
+.search-wrapper {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: linear-gradient(to bottom,
+      var(--bg-color) 0%,
+      var(--bg-color) 70%,
+      rgba(10, 10, 10, 0.95) 85%,
+      rgba(10, 10, 10, 0) 100%);
+  padding: 1rem 0 3rem;
+  margin-bottom: -2rem;
+}
+
 .search-container {
   position: relative;
   width: 100%;
   max-width: 600px;
-  margin: 0 auto 3rem;
+  margin: 0 auto;
 }
 
 .search-input-wrapper {
