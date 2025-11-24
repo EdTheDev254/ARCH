@@ -1,5 +1,7 @@
 # ARCH
 
+> **Note:** This repository was created entirely using an Agent in the **Antigravity IDE** powered by **Gemini 3.0 Pro - High**. I did not code a single line manually.
+
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
 Currently, two official plugins are available:
