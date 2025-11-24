@@ -136,8 +136,7 @@
       "age": "72-69.9 Million Years Ago"
     },
     "images": [
-      "/images/carnotaurus-0.jpg",
-      "/images/carnotaurus-1.png"
+      "/images/carnotaurus-0.jpg"
     ]
   },
   {
@@ -654,7 +653,7 @@
     "period": "Cretaceous",
     "location": "South America",
     "description": "One of the largest known terrestrial carnivores, rivaling T-Rex in size. It had a massive skull and powerful jaws built for hunting large prey.",
-    "funFact": "Its brain was shaped like a banana and was relatively small for its body size.",
+    "funFact": "Its brain was shaped like a banana and was relatively small for body size.",
     "discovery": {
       "who": "Rubén Carolini",
       "when": "1993",
@@ -701,6 +700,197 @@
     },
     "images": [
       "/images/helicoprion-0.jpg"
+    ]
+  },
+  {
+    "id": "therizinosaurus",
+    "name": "Therizinosaurus",
+    "scientificName": "Therizinosaurus cheloniformis",
+    "era": "Late Cretaceous",
+    "period": "Cretaceous",
+    "location": "Mongolia",
+    "description": "A colossal herbivore with the longest claws of any known animal, reaching up to 1 meter (3.3 ft) in length. Despite its terrifying appearance, it was a gentle giant that used its claws to pull down vegetation.",
+    "funFact": "Its name means 'scythe lizard', referring to its massive claws.",
+    "discovery": {
+      "who": "Evgeny Maleev",
+      "when": "1954",
+      "where": "Gobi Desert, Mongolia",
+      "age": "70 Million Years Ago"
+    },
+    "images": [
+      "/images/therizinosaurus-0.png"
+    ]
+  },
+  {
+    "id": "baryonyx",
+    "name": "Baryonyx",
+    "scientificName": "Baryonyx walkeri",
+    "era": "Early Cretaceous",
+    "period": "Cretaceous",
+    "location": "Europe",
+    "description": "A fish-eating dinosaur with a crocodile-like snout and a large hooked claw on its thumb. It likely waded in shallow water to catch slippery prey.",
+    "funFact": "It was the first carnivorous dinosaur discovered to have a fish-eating diet.",
+    "discovery": {
+      "who": "William Walker",
+      "when": "1983",
+      "where": "Surrey, England",
+      "age": "130-125 Million Years Ago"
+    },
+    "images": [
+      "/images/baryonyx-0.jpg"
+    ]
+  },
+  {
+    "id": "microraptor",
+    "name": "Microraptor",
+    "scientificName": "Microraptor zhaoianus",
+    "era": "Early Cretaceous",
+    "period": "Cretaceous",
+    "location": "China",
+    "description": "A tiny, four-winged dinosaur that could glide between trees. It had long flight feathers on both its arms and legs, making it one of the most unusual dinosaurs ever found.",
+    "funFact": "Its iridescent black feathers suggest it may have looked like a crow.",
+    "discovery": {
+      "who": "Xu Xing",
+      "when": "2000",
+      "where": "Liaoning, China",
+      "age": "120 Million Years Ago"
+    },
+    "images": [
+      "/images/microraptor-0.jpg",
+      "/images/microraptor-1.png"
+    ]
+  },
+  {
+    "id": "tiktaalik",
+    "name": "Tiktaalik",
+    "scientificName": "Tiktaalik roseae",
+    "era": "Late Devonian",
+    "period": "Devonian",
+    "location": "Canada",
+    "description": "A crucial transitional fossil between fish and tetrapods (four-limbed land animals). It had fins with wrists, allowing it to prop itself up in shallow water or on land.",
+    "funFact": "It is often called a 'fishapod' because it shares characteristics of both fish and tetrapods.",
+    "discovery": {
+      "who": "Neil Shubin",
+      "when": "2004",
+      "where": "Ellesmere Island, Canada",
+      "age": "375 Million Years Ago"
+    },
+    "images": [
+      "/images/tiktaalik-0.jpg"
+    ]
+  },
+  {
+    "id": "hallucigenia",
+    "name": "Hallucigenia",
+    "scientificName": "Hallucigenia sparsa",
+    "era": "Cambrian",
+    "period": "Cambrian",
+    "location": "Canada",
+    "description": "A small, worm-like creature with seven pairs of long spines on its back and seven pairs of tentacles for legs. It is one of the strangest animals from the Cambrian Explosion.",
+    "funFact": "Scientists originally reconstructed it upside down, thinking its spines were legs!",
+    "discovery": {
+      "who": "Charles Doolittle Walcott",
+      "when": "1911",
+      "where": "Burgess Shale, Canada",
+      "age": "508 Million Years Ago"
+    },
+    "images": [
+      "/images/hallucigenia-0.jpg"
+    ]
+  },
+  {
+    "id": "coelophysis",
+    "name": "Coelophysis",
+    "scientificName": "Coelophysis bauri",
+    "era": "Late Triassic",
+    "period": "Triassic",
+    "location": "North America",
+    "description": "A small, slender, bipedal carnivore that was one of the earliest dinosaurs. It was built for speed and agility.",
+    "funFact": "Thousands of Coelophysis skeletons were found together at Ghost Ranch, New Mexico.",
+    "discovery": {
+      "who": "Edward Drinker Cope",
+      "when": "1889",
+      "where": "New Mexico, USA",
+      "age": "216-196 Million Years Ago"
+    },
+    "images": [
+      "/images/coelophysis-0.png"
+    ]
+  },
+  {
+    "id": "plateosaurus",
+    "name": "Plateosaurus",
+    "scientificName": "Plateosaurus engelhardti",
+    "era": "Late Triassic",
+    "period": "Triassic",
+    "location": "Europe",
+    "description": "A bipedal herbivore with a long neck and tail. It was one of the first large dinosaurs and a predecessor to the giant sauropods.",
+    "funFact": "It could likely switch between walking on two legs and four legs.",
+    "discovery": {
+      "who": "Johann Friedrich Engelhardt",
+      "when": "1834",
+      "where": "Germany",
+      "age": "214-204 Million Years Ago"
+    },
+    "images": [
+      "/images/plateosaurus-0.png"
+    ]
+  },
+  {
+    "id": "liopleurodon",
+    "name": "Liopleurodon",
+    "scientificName": "Liopleurodon ferox",
+    "era": "Middle Jurassic",
+    "period": "Jurassic",
+    "location": "Europe",
+    "description": "A massive marine reptile with four powerful flippers. It was an apex predator of the Jurassic seas.",
+    "funFact": "Its teeth were up to 4 inches long.",
+    "discovery": {
+      "who": "Henri Émile Sauvage",
+      "when": "1873",
+      "where": "France",
+      "age": "166-155 Million Years Ago"
+    },
+    "images": [
+      "/images/liopleurodon-0.jpg"
+    ]
+  },
+  {
+    "id": "sarcosuchus",
+    "name": "Sarcosuchus",
+    "scientificName": "Sarcosuchus imperator",
+    "era": "Early Cretaceous",
+    "period": "Cretaceous",
+    "location": "Africa",
+    "description": "Known as 'SuperCroc', this was a gigantic relative of crocodiles that lived alongside dinosaurs. It had a long snout ending in a distinct bowl shape.",
+    "funFact": "It grew up to 12 meters (40 ft) long and weighed up to 8 tons.",
+    "discovery": {
+      "who": "Albert-Félix de Lapparent",
+      "when": "1947",
+      "where": "Sahara Desert",
+      "age": "112 Million Years Ago"
+    },
+    "images": [
+      "/images/sarcosuchus-0.png"
+    ]
+  },
+  {
+    "id": "opabinia",
+    "name": "Opabinia",
+    "scientificName": "Opabinia regalis",
+    "era": "Cambrian",
+    "period": "Cambrian",
+    "location": "Canada",
+    "description": "A bizarre creature with five eyes and a long, flexible nozzle ending in a claw. It is one of the most famous oddities of the Burgess Shale.",
+    "funFact": "When its reconstruction was first presented, the audience laughed because it looked so strange.",
+    "discovery": {
+      "who": "Charles Doolittle Walcott",
+      "when": "1912",
+      "where": "Burgess Shale, Canada",
+      "age": "505 Million Years Ago"
+    },
+    "images": [
+      "/images/opabinia-0.jpg"
     ]
   }
 ]
