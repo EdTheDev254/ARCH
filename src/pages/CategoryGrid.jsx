@@ -19,13 +19,13 @@ const CategoryGrid = () => {
                 transition={{ duration: 1 }}
                 style={{ marginBottom: '4rem', textAlign: 'center', paddingTop: '2rem' }}
             >
-                <h1 style={{ fontSize: '4rem', marginBottom: '1rem' }}>{period} <span style={{ color: 'var(--accent-color)' }}>Record</span></h1>
+                <h1 style={{ marginBottom: '1rem' }}>{period} <span style={{ color: 'var(--accent-color)' }}>Record</span></h1>
                 <p style={{ color: 'var(--text-secondary)', maxWidth: '600px', margin: '0 auto' }}>
                     Exploring species from the {period} period.
                 </p>
             </motion.div>
 
-            <div className="grid" style={{ gridTemplateColumns: 'repeat(auto-fill, minmax(350px, 1fr))', paddingBottom: '4rem' }}>
+            <div className="grid-responsive">
                 {filteredSpecies.map((species, index) => (
                     <SpeciesCard key={species.id} species={species} index={index} />
                 ))}

@@ -19,7 +19,7 @@ const CategoryList = () => {
                 transition={{ duration: 1 }}
                 style={{ marginBottom: '4rem', textAlign: 'center', paddingTop: '4rem' }}
             >
-                <h1 style={{ fontSize: '4rem', marginBottom: '1rem' }}>Extinct <span style={{ color: 'var(--accent-color)' }}>Record</span></h1>
+                <h1 style={{ marginBottom: '1rem' }}>Extinct <span style={{ color: 'var(--accent-color)' }}>Record</span></h1>
                 <p style={{ color: 'var(--text-secondary)', maxWidth: '600px', margin: '0 auto' }}>
                     Select a time period to explore the catalog of lost life.
                 </p>

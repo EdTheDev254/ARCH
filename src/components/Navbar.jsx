@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 
 const Navbar = () => {
   return (
-    <motion.nav 
+    <motion.nav
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.8, ease: "easeOut" }}
@@ -14,7 +14,7 @@ const Navbar = () => {
         borderBottom: '1px solid rgba(255,255,255,0.1)'
       }}
     >
-      <div className="container flex-center" style={{ justifyContent: 'space-between' }}>
+      <div className="container nav-container">
         <Link to="/" style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
           <span style={{ fontSize: '1.5rem', fontWeight: 'bold', fontFamily: 'var(--font-heading)', letterSpacing: '1px' }}>
             ARCH<span style={{ color: 'var(--accent-color)' }}>.</span>LOG
