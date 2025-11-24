@@ -1,0 +1,611 @@
+[
+  {
+    "id": "tyrannosaurus-rex",
+    "name": "Tyrannosaurus Rex",
+    "scientificName": "Tyrannosaurus rex",
+    "era": "Late Cretaceous",
+    "period": "Cretaceous",
+    "location": "North America",
+    "description": "One of the largest land carnivores of all time, T-Rex was a fearsome predator with a massive skull balanced by a long, heavy tail. It had the strongest bite force of any terrestrial animal that has ever lived.",
+    "funFact": "T-Rex's bite force was estimated to be around 12,800 pounds, enough to crush bone.",
+    "discovery": {
+      "who": "Barnum Brown",
+      "when": "1902",
+      "where": "Hell Creek Formation, Montana, USA",
+      "age": "68-66 Million Years Ago"
+    },
+    "images": [
+      "/images/tyrannosaurus-rex-0.jpg",
+      "/images/tyrannosaurus-rex-1.jpg"
+    ]
+  },
+  {
+    "id": "triceratops",
+    "name": "Triceratops",
+    "scientificName": "Triceratops horridus",
+    "era": "Late Cretaceous",
+    "period": "Cretaceous",
+    "location": "North America",
+    "description": "A large herbivorous dinosaur with a bony frill and three horns on its skull. It was one of the last non-avian dinosaurs to evolve. The frill may have been used for display or defense.",
+    "funFact": "The skull of a Triceratops could grow up to 2.5 meters (8.2 feet) in length.",
+    "discovery": {
+      "who": "Othniel Charles Marsh",
+      "when": "1889",
+      "where": "Denver, Colorado, USA",
+      "age": "68-66 Million Years Ago"
+    },
+    "images": [
+      "/images/triceratops-0.jpg",
+      "/images/triceratops-1.jpg",
+      "/images/triceratops-2.jpg"
+    ]
+  },
+  {
+    "id": "velociraptor",
+    "name": "Velociraptor",
+    "scientificName": "Velociraptor mongoliensis",
+    "era": "Late Cretaceous",
+    "period": "Cretaceous",
+    "location": "Mongolia",
+    "description": "A small, turkey-sized dromaeosaurid dinosaur. It was a bipedal, feathered carnivore with a long tail and an enlarged sickle-shaped claw on each hindfoot.",
+    "funFact": "Velociraptor was much smaller than the ones in Jurassic Park, standing only about 0.5 meters high.",
+    "discovery": {
+      "who": "Peter Kaisen",
+      "when": "1923",
+      "where": "Gobi Desert, Mongolia",
+      "age": "75-71 Million Years Ago"
+    },
+    "images": [
+      "/images/velociraptor-0.PNG",
+      "/images/velociraptor-1.png"
+    ]
+  },
+  {
+    "id": "spinosaurus",
+    "name": "Spinosaurus",
+    "scientificName": "Spinosaurus aegyptiacus",
+    "era": "Late Cretaceous",
+    "period": "Cretaceous",
+    "location": "North Africa",
+    "description": "The largest known carnivorous dinosaur, even larger than T-Rex. It had a massive sail on its back and was adapted for a semi-aquatic lifestyle, hunting fish.",
+    "funFact": "Spinosaurus is the first dinosaur known to have been able to swim.",
+    "discovery": {
+      "who": "Ernst Stromer",
+      "when": "1912",
+      "where": "Egypt",
+      "age": "99-93.5 Million Years Ago"
+    },
+    "images": [
+      "/images/spinosaurus-0.png",
+      "/images/spinosaurus-1.png"
+    ]
+  },
+  {
+    "id": "ankylosaurus",
+    "name": "Ankylosaurus",
+    "scientificName": "Ankylosaurus magniventris",
+    "era": "Late Cretaceous",
+    "period": "Cretaceous",
+    "location": "North America",
+    "description": "A heavily armored dinosaur with a large club at the end of its tail. It was a low-slung herbivore built like a living tank.",
+    "funFact": "Its eyelids were even armored with bone.",
+    "discovery": {
+      "who": "Barnum Brown",
+      "when": "1908",
+      "where": "Montana, USA",
+      "age": "68-66 Million Years Ago"
+    },
+    "images": [
+      "/images/ankylosaurus-0.png",
+      "/images/ankylosaurus-1.png"
+    ]
+  },
+  {
+    "id": "parasaurolophus",
+    "name": "Parasaurolophus",
+    "scientificName": "Parasaurolophus walkeri",
+    "era": "Late Cretaceous",
+    "period": "Cretaceous",
+    "location": "North America",
+    "description": "Known for its large, elaborate cranial crest, which formed a long curved tube projecting upwards and back from the skull. It likely used this crest for sound amplification.",
+    "funFact": "Computer simulations suggest its crest could produce low-frequency sounds like a foghorn.",
+    "discovery": {
+      "who": "William Parks",
+      "when": "1922",
+      "where": "Alberta, Canada",
+      "age": "76.5-73 Million Years Ago"
+    },
+    "images": [
+      "/images/parasaurolophus-0.svg",
+      "/images/parasaurolophus-1.png"
+    ]
+  },
+  {
+    "id": "carnotaurus",
+    "name": "Carnotaurus",
+    "scientificName": "Carnotaurus sastrei",
+    "era": "Late Cretaceous",
+    "period": "Cretaceous",
+    "location": "South America",
+    "description": "A large theropod dinosaur with distinctive bull-like horns above its eyes. It had extremely small vestigial forelimbs and was built for speed.",
+    "funFact": "Its name means 'meat-eating bull'.",
+    "discovery": {
+      "who": "José Bonaparte",
+      "when": "1984",
+      "where": "Chubut, Argentina",
+      "age": "72-69.9 Million Years Ago"
+    },
+    "images": [
+      "/images/carnotaurus-0.jpg",
+      "/images/carnotaurus-1.png"
+    ]
+  },
+  {
+    "id": "pteranodon",
+    "name": "Pteranodon",
+    "scientificName": "Pteranodon longiceps",
+    "era": "Late Cretaceous",
+    "period": "Cretaceous",
+    "location": "North America",
+    "description": "A genus of pterosaur that included some of the largest known flying reptiles, with wingspans over 6 meters (20 feet). They were not dinosaurs, but flying reptiles that lived alongside them.",
+    "funFact": "Pteranodon means 'wing without tooth'.",
+    "discovery": {
+      "who": "Othniel Charles Marsh",
+      "when": "1870",
+      "where": "Western Kansas, USA",
+      "age": "86-84.5 Million Years Ago"
+    },
+    "images": [
+      "/images/pteranodon-0.jpg",
+      "/images/pteranodon-1.jpg"
+    ]
+  },
+  {
+    "id": "stegosaurus",
+    "name": "Stegosaurus",
+    "scientificName": "Stegosaurus stenops",
+    "era": "Late Jurassic",
+    "period": "Jurassic",
+    "location": "North America",
+    "description": "A herbivorous dinosaur known for the distinctive upright plates along its back and spikes on its tail. It had a very small brain for its body size.",
+    "funFact": "The spikes on its tail are often called a 'thagomizer'.",
+    "discovery": {
+      "who": "Othniel Charles Marsh",
+      "when": "1877",
+      "where": "Morrison, Colorado, USA",
+      "age": "155-150 Million Years Ago"
+    },
+    "images": [
+      "/images/stegosaurus-0.png",
+      "/images/stegosaurus-2.png"
+    ]
+  },
+  {
+    "id": "brachiosaurus",
+    "name": "Brachiosaurus",
+    "scientificName": "Brachiosaurus altithorax",
+    "era": "Late Jurassic",
+    "period": "Jurassic",
+    "location": "North America",
+    "description": "A gigantic sauropod dinosaur with longer front legs than hind legs, giving it a giraffe-like stance. It was one of the tallest dinosaurs to ever live.",
+    "funFact": "Unlike most other sauropods, Brachiosaurus likely held its neck high, browsing on tall trees.",
+    "discovery": {
+      "who": "Elmer S. Riggs",
+      "when": "1900",
+      "where": "Colorado River Valley, USA",
+      "age": "154-153 Million Years Ago"
+    },
+    "images": [
+      "/images/brachiosaurus-0.jpg",
+      "/images/brachiosaurus-2.png"
+    ]
+  },
+  {
+    "id": "allosaurus",
+    "name": "Allosaurus",
+    "scientificName": "Allosaurus fragilis",
+    "era": "Late Jurassic",
+    "period": "Jurassic",
+    "location": "North America",
+    "description": "A large bipedal predator. Its skull was large and equipped with dozens of sharp, serrated teeth. It was the apex predator of the Morrison Formation.",
+    "funFact": "Allosaurus could open its jaws extremely wide, possibly to use its upper jaw like a hatchet.",
+    "discovery": {
+      "who": "Othniel Charles Marsh",
+      "when": "1877",
+      "where": "Colorado, USA",
+      "age": "155-145 Million Years Ago"
+    },
+    "images": [
+      "/images/allosaurus-0.png"
+    ]
+  },
+  {
+    "id": "diplodocus",
+    "name": "Diplodocus",
+    "scientificName": "Diplodocus carnegii",
+    "era": "Late Jurassic",
+    "period": "Jurassic",
+    "location": "North America",
+    "description": "One of the longest dinosaurs, with a unique body shape, long neck and tail, and four sturdy legs. Its tail was extremely long and whip-like.",
+    "funFact": "It could likely crack its tail like a whip, creating a sonic boom.",
+    "discovery": {
+      "who": "Samuel Wendell Williston",
+      "when": "1877",
+      "where": "Colorado, USA",
+      "age": "154-152 Million Years Ago"
+    },
+    "images": [
+      "/images/diplodocus-0.png",
+      "/images/diplodocus-1.jpg"
+    ]
+  },
+  {
+    "id": "archaeopteryx",
+    "name": "Archaeopteryx",
+    "scientificName": "Archaeopteryx lithographica",
+    "era": "Late Jurassic",
+    "period": "Jurassic",
+    "location": "Germany",
+    "description": "Often considered the first bird, Archaeopteryx is a transitional fossil between non-avian dinosaurs and birds. It had feathers and wings but also teeth and a long bony tail.",
+    "funFact": "The Berlin Specimen is one of the most famous fossils in the world.",
+    "discovery": {
+      "who": "Hermann von Meyer",
+      "when": "1861",
+      "where": "Solnhofen, Germany",
+      "age": "150 Million Years Ago"
+    },
+    "images": [
+      "/images/archaeopteryx-0.jpg"
+    ]
+  },
+  {
+    "id": "iguanodon",
+    "name": "Iguanodon",
+    "scientificName": "Iguanodon bernissartensis",
+    "era": "Early Cretaceous",
+    "period": "Cretaceous",
+    "location": "Europe",
+    "description": "A large herbivore that could shift from bipedal to quadrupedal movement. It had a distinctive large thumb spike, which was likely used for defense against predators.",
+    "funFact": "It was one of the first three dinosaurs ever named.",
+    "discovery": {
+      "who": "Gideon Mantell",
+      "when": "1822",
+      "where": "Sussex, England",
+      "age": "126-125 Million Years Ago"
+    },
+    "images": [
+      "/images/iguanodon-0.svg",
+      "/images/iguanodon-1.jpg"
+    ]
+  },
+  {
+    "id": "dimetrodon",
+    "name": "Dimetrodon",
+    "scientificName": "Dimetrodon grandis",
+    "era": "Early Permian",
+    "period": "Permian",
+    "location": "North America",
+    "description": "Often mistaken for a dinosaur, Dimetrodon was actually a synapsid, a mammal-like reptile that lived millions of years before the first dinosaurs. It had a large sail on its back.",
+    "funFact": "The sail was likely used for thermoregulation, helping it warm up or cool down.",
+    "discovery": {
+      "who": "Edward Drinker Cope",
+      "when": "1878",
+      "where": "Texas, USA",
+      "age": "295-272 Million Years Ago"
+    },
+    "images": [
+      "/images/dimetrodon-0.jpg"
+    ]
+  },
+  {
+    "id": "woolly-mammoth",
+    "name": "Woolly Mammoth",
+    "scientificName": "Mammuthus primigenius",
+    "era": "Pleistocene",
+    "period": "Pleistocene",
+    "location": "Northern Hemisphere",
+    "description": "Ideally adapted to the ice age environment, these massive elephants were covered in thick fur and possessed long, curved tusks.",
+    "funFact": "The last population of woolly mammoths lived on Wrangel Island until 1650 BC.",
+    "discovery": {
+      "who": "Ossip Schumachov",
+      "when": "1799",
+      "where": "Siberia",
+      "age": "400,000 - 4,000 Years Ago"
+    },
+    "images": [
+      "/images/woolly-mammoth-0.jpg",
+      "/images/woolly-mammoth-1.jpg"
+    ]
+  },
+  {
+    "id": "smilodon",
+    "name": "Saber-toothed Tiger",
+    "scientificName": "Smilodon fatalis",
+    "era": "Pleistocene",
+    "period": "Pleistocene",
+    "location": "Americas",
+    "description": "Famous for its long, curved canine teeth which could reach up to 28 cm. It was a robust predator built for wrestling prey to the ground.",
+    "funFact": "Despite the name, they are not closely related to modern tigers.",
+    "discovery": {
+      "who": "Peter Wilhelm Lund",
+      "when": "1842",
+      "where": "Brazil",
+      "age": "2.5 Million - 10,000 Years Ago"
+    },
+    "images": [
+      "/images/smilodon-0.jpg",
+      "/images/smilodon-1.jpg",
+      "/images/smilodon-2.JPG"
+    ]
+  },
+  {
+    "id": "dunkleosteus",
+    "name": "Dunkleosteus",
+    "scientificName": "Dunkleosteus terrelli",
+    "era": "Late Devonian",
+    "period": "Devonian",
+    "location": "North America",
+    "description": "A massive armored fish that was one of the first apex predators in the fossil record. Instead of teeth, it had sharp bony plates that acted like shears.",
+    "funFact": "It could open its mouth in 1/50th of a second, creating a vacuum that sucked prey in.",
+    "discovery": {
+      "who": "Jay Terrell",
+      "when": "1867",
+      "where": "Ohio, USA",
+      "age": "382-358 Million Years Ago"
+    },
+    "images": [
+      "/images/dunkleosteus-0.jpg"
+    ]
+  },
+  {
+    "id": "anomalocaris",
+    "name": "Anomalocaris",
+    "scientificName": "Anomalocaris canadensis",
+    "era": "Cambrian",
+    "period": "Cambrian",
+    "location": "Canada",
+    "description": "The first known super-predator, this alien-looking creature had stalked eyes, two grasping appendages, and a circular mouth. It dominated the Cambrian seas.",
+    "funFact": "Its name means 'abnormal shrimp' because its parts were originally thought to be separate animals.",
+    "discovery": {
+      "who": "Joseph Frederick Whiteaves",
+      "when": "1892",
+      "where": "Burgess Shale, Canada",
+      "age": "508 Million Years Ago"
+    },
+    "images": [
+      "/images/anomalocaris-0.png",
+      "/images/anomalocaris-1.jpg"
+    ]
+  },
+  {
+    "id": "megalodon",
+    "name": "Megalodon",
+    "scientificName": "Otodus megalodon",
+    "era": "Neogene",
+    "period": "Neogene",
+    "location": "Global",
+    "description": "The largest shark that ever lived. It is known primarily from its giant teeth, which can be over 7 inches long. It likely preyed on whales.",
+    "funFact": "Its bite force was estimated to be up to 40,000 pounds, 3 times stronger than a T-Rex.",
+    "discovery": {
+      "who": "Louis Agassiz",
+      "when": "1843",
+      "where": "Global",
+      "age": "23-3.6 Million Years Ago"
+    },
+    "images": [
+      "/images/megalodon-0.png",
+      "/images/megalodon-1.jpg"
+    ]
+  },
+  {
+    "id": "dodo",
+    "name": "Dodo",
+    "scientificName": "Raphus cucullatus",
+    "era": "Holocene",
+    "period": "Holocene",
+    "location": "Mauritius",
+    "description": "A flightless bird that lived on the island of Mauritius. Its fearlessness of humans and inability to fly made it easy prey for sailors and invasive species.",
+    "funFact": "The Dodo is related to pigeons and doves.",
+    "discovery": {
+      "who": "Portuguese Sailors",
+      "when": "~1507",
+      "where": "Mauritius",
+      "age": "Extinct 1662"
+    },
+    "images": [
+      "/images/dodo-0.png",
+      "/images/dodo-1.jpeg",
+      "/images/dodo-2.jpg"
+    ]
+  },
+  {
+    "id": "titanoboa",
+    "name": "Titanoboa",
+    "scientificName": "Titanoboa cerrejonensis",
+    "era": "Paleocene",
+    "period": "Paleogene",
+    "location": "South America",
+    "description": "The largest snake ever discovered, reaching lengths of up to 12.8 meters (42 ft). It lived in the tropical rainforests of South America shortly after the extinction of the dinosaurs.",
+    "funFact": "It was so large it would have had to spend much of its time in water to support its weight.",
+    "discovery": {
+      "who": "Jonathan Bloch & Carlos Jaramillo",
+      "when": "2009",
+      "where": "Cerrejón, Colombia",
+      "age": "60-58 Million Years Ago"
+    },
+    "images": [
+      "/images/titanoboa-0.jpg"
+    ]
+  },
+  {
+    "id": "mosasaurus",
+    "name": "Mosasaurus",
+    "scientificName": "Mosasaurus hoffmannii",
+    "era": "Late Cretaceous",
+    "period": "Cretaceous",
+    "location": "Global",
+    "description": "A colossal marine reptile that ruled the Late Cretaceous seas. It was not a dinosaur but a lizard, closely related to modern monitor lizards and snakes.",
+    "funFact": "It had a second row of teeth in the roof of its mouth to hold onto slippery prey.",
+    "discovery": {
+      "who": "Johann Leonard Hoffmann",
+      "when": "1764",
+      "where": "Maastricht, Netherlands",
+      "age": "70-66 Million Years Ago"
+    },
+    "images": [
+      "/images/mosasaurus-0.jpg"
+    ]
+  },
+  {
+    "id": "glyptodon",
+    "name": "Glyptodon",
+    "scientificName": "Glyptodon clavipes",
+    "era": "Pleistocene",
+    "period": "Pleistocene",
+    "location": "South America",
+    "description": "A giant armored mammal related to armadillos. It was roughly the size and weight of a Volkswagen Beetle and carried a massive domed shell.",
+    "funFact": "Indigenous people may have used their empty shells as shelters.",
+    "discovery": {
+      "who": "Richard Owen",
+      "when": "1839",
+      "where": "Argentina",
+      "age": "2.5 Million - 10,000 Years Ago"
+    },
+    "images": [
+      "/images/glyptodon-0.jpg"
+    ]
+  },
+  {
+    "id": "megatherium",
+    "name": "Megatherium",
+    "scientificName": "Megatherium americanum",
+    "era": "Pleistocene",
+    "period": "Pleistocene",
+    "location": "South America",
+    "description": "A giant ground sloth that was one of the largest land mammals known. It could stand on its hind legs to reach high branches and was likely slow-moving.",
+    "funFact": "It was one of the few land mammals large enough to have few natural predators when fully grown.",
+    "discovery": {
+      "who": "Manuel de Torres",
+      "when": "1788",
+      "where": "Luján, Argentina",
+      "age": "400,000 - 8,000 Years Ago"
+    },
+    "images": [
+      "/images/megatherium-0.jpg"
+    ]
+  },
+  {
+    "id": "plesiosaurus",
+    "name": "Plesiosaurus",
+    "scientificName": "Plesiosaurus dolichodeirus",
+    "era": "Early Jurassic",
+    "period": "Jurassic",
+    "location": "Europe",
+    "description": "A marine reptile with a broad body, short tail, and long neck. It swam using four flippers and likely hunted fish and belemnites.",
+    "funFact": "It is often associated with the Loch Ness Monster legend, though they went extinct 66 million years ago.",
+    "discovery": {
+      "who": "Mary Anning",
+      "when": "1823",
+      "where": "Dorset, England",
+      "age": "199-175 Million Years Ago"
+    },
+    "images": [
+      "/images/plesiosaurus-0.png"
+    ]
+  },
+  {
+    "id": "quetzalcoatlus",
+    "name": "Quetzalcoatlus",
+    "scientificName": "Quetzalcoatlus northropi",
+    "era": "Late Cretaceous",
+    "period": "Cretaceous",
+    "location": "North America",
+    "description": "One of the largest flying animals of all time, this pterosaur had a wingspan of up to 11-12 meters (36-39 ft). It likely stalked prey on land like a giant stork.",
+    "funFact": "When standing on the ground, it was as tall as a modern giraffe.",
+    "discovery": {
+      "who": "Douglas Lawson",
+      "when": "1971",
+      "where": "Big Bend National Park, Texas, USA",
+      "age": "68-66 Million Years Ago"
+    },
+    "images": [
+      "/images/quetzalcoatlus-0.png"
+    ]
+  },
+  {
+    "id": "thylacine",
+    "name": "Thylacine",
+    "scientificName": "Thylacinus cynocephalus",
+    "era": "Holocene",
+    "period": "Holocene",
+    "location": "Tasmania, Australia",
+    "description": "Also known as the Tasmanian Tiger, it was the largest carnivorous marsupial of modern times. It had a stiff tail and abdominal pouch (in both sexes).",
+    "funFact": "It could open its jaws to an unusually wide angle of 120 degrees.",
+    "discovery": {
+      "who": "Indigenous Australians",
+      "when": "Prehistoric",
+      "where": "Australia",
+      "age": "Extinct 1936"
+    },
+    "images": [
+      "/images/thylacine-0.png"
+    ]
+  },
+  {
+    "id": "pachycephalosaurus",
+    "name": "Pachycephalosaurus",
+    "scientificName": "Pachycephalosaurus wyomingensis",
+    "era": "Late Cretaceous",
+    "period": "Cretaceous",
+    "location": "North America",
+    "description": "Famous for its thick, domed skull which could be up to 25 cm thick. It was a bipedal herbivore that may have used its head for display or combat.",
+    "funFact": "Its name means 'thick-headed lizard'.",
+    "discovery": {
+      "who": "William Winkley",
+      "when": "1938",
+      "where": "Montana, USA",
+      "age": "70-66 Million Years Ago"
+    },
+    "images": [
+      "/images/pachycephalosaurus-0.jpg"
+    ]
+  },
+  {
+    "id": "deinosuchus",
+    "name": "Deinosuchus",
+    "scientificName": "Deinosuchus riograndensis",
+    "era": "Late Cretaceous",
+    "period": "Cretaceous",
+    "location": "North America",
+    "description": "A gigantic prehistoric crocodile that grew up to 10-12 meters long. It had teeth the size of bananas and likely preyed on dinosaurs.",
+    "funFact": "Its bite force is estimated to have been even stronger than T-Rex's.",
+    "discovery": {
+      "who": "W.J. Holland",
+      "when": "1909",
+      "where": "Montana, USA",
+      "age": "82-73 Million Years Ago"
+    },
+    "images": [
+      "/images/deinosuchus-0.png"
+    ]
+  },
+  {
+    "id": "arthropleura",
+    "name": "Arthropleura",
+    "scientificName": "Arthropleura armata",
+    "era": "Carboniferous",
+    "period": "Carboniferous",
+    "location": "North America, Europe",
+    "description": "The largest known land invertebrate of all time, this giant millipede could reach 2.5 meters in length. It lived in oxygen-rich swamp forests.",
+    "funFact": "It likely had few predators due to its massive size and tough exoskeleton.",
+    "discovery": {
+      "who": "Hermann Jordan",
+      "when": "1854",
+      "where": "Germany",
+      "age": "315-299 Million Years Ago"
+    },
+    "images": [
+      "/images/arthropleura-0.png"
+    ]
+  }
+]
