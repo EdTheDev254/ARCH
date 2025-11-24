@@ -33,8 +33,8 @@ const CategoryList = () => {
                         <motion.div
                             initial={{ x: -50, opacity: 0 }}
                             animate={{ x: 0, opacity: 1 }}
-                            transition={{ delay: index * 0.1 }}
-                            whileHover={{ x: 20, backgroundColor: 'rgba(255,255,255,0.05)', transition: { duration: 0.2 } }}
+                            transition={{ delay: index * 0.1, duration: 0.5 }}
+                            whileHover={{ x: 20, backgroundColor: 'rgba(255,255,255,0.05)' }}
                             style={{
                                 padding: '2rem',
                                 borderBottom: '1px solid rgba(255,255,255,0.1)',
