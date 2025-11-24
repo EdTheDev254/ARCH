@@ -21,7 +21,7 @@ const SpeciesCard = ({ species, index }) => {
             >
                 <div style={{ height: '100%', width: '100%' }}>
                     <motion.img
-                        src={species.images[0]}
+                        src={import.meta.env.BASE_URL + species.images[0].replace(/^\//, '')}
                         alt={species.name}
                         style={{
                             width: '100%',

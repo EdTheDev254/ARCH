@@ -24,7 +24,7 @@ const SpeciesDetail = () => {
                 >
                     <div className="img-container-responsive">
                         <img
-                            src={species.images[selectedImage]}
+                            src={import.meta.env.BASE_URL + species.images[selectedImage].replace(/^\//, '')}
                             alt={species.name}
                             style={{
                                 width: '100%',
@@ -51,7 +51,7 @@ const SpeciesDetail = () => {
                                 }}
                             >
                                 <img
-                                    src={img}
+                                    src={import.meta.env.BASE_URL + img.replace(/^\//, '')}
                                     alt={`${species.name} ${idx + 1}`}
                                     style={{ width: '100%', height: '80px', objectFit: 'cover', display: 'block' }}
                                 />
