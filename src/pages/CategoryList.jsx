@@ -2,10 +2,11 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import speciesData from '../data/species.json';
+import SearchBar from '../components/SearchBar';
 
 const CategoryList = () => {
     // Extract unique periods and sort them chronologically (custom order)
-    const periodOrder = ['Cambrian', 'Devonian', 'Carboniferous', 'Triassic', 'Jurassic', 'Cretaceous', 'Paleogene', 'Neogene', 'Pleistocene', 'Holocene'];
+    const periodOrder = ['Cambrian', 'Devonian', 'Carboniferous', 'Permian', 'Triassic', 'Jurassic', 'Cretaceous', 'Paleogene', 'Neogene', 'Pleistocene', 'Holocene'];
 
     const periods = [...new Set(speciesData.map(s => s.period))].sort((a, b) => {
         return periodOrder.indexOf(a) - periodOrder.indexOf(b);
@@ -20,9 +21,10 @@ const CategoryList = () => {
                 style={{ marginBottom: '4rem', textAlign: 'center', paddingTop: '4rem' }}
             >
                 <h1 style={{ marginBottom: '1rem' }}>Extinct <span style={{ color: 'var(--accent-color)' }}>Record</span></h1>
-                <p style={{ color: 'var(--text-secondary)', maxWidth: '600px', margin: '0 auto' }}>
+                <p style={{ color: 'var(--text-secondary)', maxWidth: '600px', margin: '0 auto 2rem' }}>
                     Select a time period to explore the catalog of lost life.
                 </p>
+                <SearchBar />
             </motion.div>
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', maxWidth: '800px', margin: '0 auto', paddingBottom: '4rem' }}>
