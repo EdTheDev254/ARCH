@@ -39,6 +39,9 @@ const CategoryGrid = () => {
 
     return (
         <>
+            {/* Always render spacer to prevent layout shift - it smoothly transitions */}
+            <div style={{ height: isSticky ? '80px' : '0px', transition: 'height 0.3s ease' }} />
+
             <Navbar
                 showSearch={isSticky}
                 searchTerm={searchTerm}
@@ -46,9 +49,6 @@ const CategoryGrid = () => {
                 searchPlaceholder={`Search ${period} species...`}
                 isSticky={isSticky}
             />
-
-            {/* Spacer when navbar is sticky */}
-            {isSticky && <div style={{ height: '80px' }} />}
 
             <div className="container">
                 <Link to="/" style={{ display: 'inline-block', marginTop: '2rem', color: 'var(--text-secondary)', textTransform: 'uppercase', fontSize: '0.8rem', letterSpacing: '1px' }}>
@@ -68,7 +68,12 @@ const CategoryGrid = () => {
                 </motion.div>
 
                 {/* Original search bar - hidden when sticky */}
-                {!isSticky && (
+                <div style={{
+                    opacity: isSticky ? 0 : 1,
+                    maxHeight: isSticky ? '0' : '200px',
+                    overflow: 'hidden',
+                    transition: 'opacity 0.3s ease, max-height 0.3s ease'
+                }}>
                     <div className="search-wrapper">
                         <div className="search-container">
                             <div className="search-input-wrapper">
@@ -87,7 +92,7 @@ const CategoryGrid = () => {
                                     type="text"
                                     placeholder={`Search ${period} species...`}
                                     value={searchTerm}
-                                    onChange={(e) => setSearchTerm(e.target.value)}
+                                    onChange={handleSearchChange}
                                     className="search-input"
                                 />
                                 {searchTerm && (
@@ -101,7 +106,7 @@ const CategoryGrid = () => {
                             </div>
                         </div>
                     </div>
-                )}
+                </div>
 
                 <div className="grid-responsive">
                     {filteredSpecies.length > 0 ? (
