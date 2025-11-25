@@ -11,11 +11,10 @@ function App() {
     <Router basename={import.meta.env.BASE_URL}>
       <ScrollToTop />
       <div className="app">
-        <Navbar />
         <Routes>
-          <Route path="/" element={<CategoryList />} />
+          <Route path="/" element={<><Navbar /><CategoryList /></>} />
           <Route path="/category/:period" element={<CategoryGrid />} />
-          <Route path="/species/:id" element={<SpeciesDetail />} />
+          <Route path="/species/:id" element={<><Navbar /><SpeciesDetail /></>} />
         </Routes>
       </div>
     </Router>
