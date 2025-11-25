@@ -6,6 +6,18 @@
   <link rel="icon" type="image/svg+xml" href="/vite.svg" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ARCH - Extinct Species Catalog</title>
+
+  <!-- GitHub Pages SPA redirect script -->
+  <script>
+    // Restore the URL after 404.html redirect
+    (function () {
+      const redirect = sessionStorage.getItem('redirect');
+      if (redirect) {
+        sessionStorage.removeItem('redirect');
+        history.replaceState(null, null, redirect);
+      }
+    })();
+  </script>
 </head>
 
 <body>
