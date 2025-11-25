@@ -31,11 +31,13 @@ const SpeciesDetail = () => {
                         <img
                             src={import.meta.env.BASE_URL.slice(0, -1) + species.images[selectedImage]}
                             alt={species.name}
+                            title={species.images[selectedImage].match(/(microraptor|therizinosaurus|baryonyx|tiktaalik|hallucigenia)/) ? `${species.name} - AI-generated scientific illustration` : `${species.name} - Scientific reconstruction`}
                             style={{
                                 width: '100%',
                                 height: '100%',
                                 objectFit: 'contain',
-                                display: 'block'
+                                display: 'block',
+                                cursor: 'help'
                             }}
                             onError={(e) => { e.target.src = 'https://placehold.co/600x400?text=Image+Not+Found'; }}
                         />
@@ -46,6 +48,7 @@ const SpeciesDetail = () => {
                             <div
                                 key={idx}
                                 onClick={() => setSelectedImage(idx)}
+                                title={img.match(/(microraptor|therizinosaurus|baryonyx|tiktaalik|hallucigenia)/) ? 'Click to view - AI-generated illustration' : 'Click to view - Scientific reconstruction'}
                                 style={{
                                     cursor: 'pointer',
                                     borderRadius: '4px',
