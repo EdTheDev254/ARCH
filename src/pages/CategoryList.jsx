@@ -20,6 +20,9 @@ const CategoryList = () => {
                 transition={{ duration: 1 }}
                 style={{ marginBottom: '4rem', textAlign: 'center', paddingTop: '4rem' }}
             >
+                <p style={{ color: '#999', fontStyle: 'italic', fontSize: '0.9rem', marginBottom: '0.5rem' }}>
+                    {speciesData.length} total species on record
+                </p>
                 <h1 style={{ marginBottom: '1rem' }}>Extinct <span style={{ color: 'var(--accent-color)' }}>Record</span></h1>
                 <p style={{ color: 'var(--text-secondary)', maxWidth: '600px', margin: '1rem auto 0' }}>
                     Select a time period to explore the catalog of lost life.
