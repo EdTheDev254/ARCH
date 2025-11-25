@@ -19,6 +19,14 @@ const CategoryGrid = () => {
 
     useEffect(() => {
         const handleScroll = () => {
+            // Only enable sticky mode if there are enough species (3+) to warrant scrolling
+            const hasEnoughContent = filteredSpecies.length >= 3;
+
+            if (!hasEnoughContent) {
+                if (isSticky) setIsSticky(false);
+                return;
+            }
+
             // When user scrolls past 200px, make navbar sticky and show search in it
             // Only update state if it actually needs to change to prevent re-renders
             if (window.scrollY > 200 && !isSticky) {
@@ -30,7 +38,7 @@ const CategoryGrid = () => {
 
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
-    }, [isSticky]);
+    }, [isSticky, filteredSpecies.length]);
 
     // Memoize the search change handler to prevent unnecessary re-renders
     const handleSearchChange = useCallback((e) => {
