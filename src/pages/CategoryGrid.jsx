@@ -69,6 +69,9 @@ const CategoryGrid = () => {
                     transition={{ duration: 1 }}
                     style={{ textAlign: 'center', paddingTop: '2rem', paddingBottom: '1rem' }}
                 >
+                    <p style={{ color: '#999', fontStyle: 'italic', fontSize: '0.9rem', marginBottom: '0.5rem' }}>
+                        {periodSpecies.length} species on record
+                    </p>
                     <h1 style={{ marginBottom: '1rem' }}>{period} <span style={{ color: 'var(--accent-color)' }}>Record</span></h1>
                     <p style={{ color: 'var(--text-secondary)', maxWidth: '600px', margin: '0 auto' }}>
                         Exploring species from the {period} period.
