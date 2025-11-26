@@ -427,7 +427,7 @@
     "description": "The largest snake ever discovered, reaching lengths of up to 12.8 meters (42 ft). It lived in the tropical rainforests of South America shortly after the extinction of the dinosaurs.",
     "funFact": "It was so large it would have had to spend much of its time in water to support its weight.",
     "discovery": {
-      "who": "Jonathan Bloch & Carlos Jaramillo",
+      "who": "Jonathan Bloch",
       "when": "2009",
       "where": "Cerrejón, Colombia",
       "age": "60-58 Million Years Ago"
@@ -617,7 +617,7 @@
     "description": "The largest flying bird ever discovered, with a wingspan of up to 7 meters (23 ft). This massive bird of prey soared over the Argentinian plains millions of years ago.",
     "funFact": "It was so large that it likely couldn't flap its wings much and instead relied on soaring like modern condors.",
     "discovery": {
-      "who": "Kenneth Campbell & Eduardo Tonni",
+      "who": "Kenneth Campbell",
       "when": "1979",
       "where": "La Pampa, Argentina",
       "age": "6 Million Years Ago"
@@ -891,6 +891,101 @@
     },
     "images": [
       "/images/opabinia-0.jpg"
+    ]
+  },
+  {
+    "id": "dimorphodon",
+    "name": "Dimorphodon",
+    "scientificName": "Dimorphodon macronyx",
+    "era": "Early Jurassic",
+    "period": "Jurassic",
+    "location": "England",
+    "description": "A medium-sized pterosaur with a large, bulky skull and two distinct types of teeth. It had a relatively short wingspan compared to later pterosaurs.",
+    "funFact": "Its name means 'two-form tooth' because it had different teeth in the front and back of its jaw.",
+    "discovery": {
+      "who": "Mary Anning",
+      "when": "1828",
+      "where": "Dorset, UK",
+      "age": "195-190 Million Years Ago"
+    },
+    "images": [
+      "/images/dimorphodon-0.png"
+    ]
+  },
+  {
+    "id": "styracosaurus",
+    "name": "Styracosaurus",
+    "scientificName": "Styracosaurus albertensis",
+    "era": "Late Cretaceous",
+    "period": "Cretaceous",
+    "location": "North America",
+    "description": "A herbivorous dinosaur with a massive skull featuring a long nose horn and a frill spiked with four to six long parietal spikes.",
+    "funFact": "It had one of the most distinctive skull displays of any dinosaur, likely used for display and defense.",
+    "discovery": {
+      "who": "Lawrence Lambe",
+      "when": "1913",
+      "where": "Alberta, Canada",
+      "age": "75.5-75 Million Years Ago"
+    },
+    "images": [
+      "/images/styracosaurus-0.png"
+    ]
+  },
+  {
+    "id": "andrewsarchus",
+    "name": "Andrewsarchus",
+    "scientificName": "Andrewsarchus mongoliensis",
+    "era": "Eocene",
+    "period": "Paleogene",
+    "location": "Mongolia",
+    "description": "A giant carnivorous mammal, known only from a single massive skull. It is believed to be related to hippos and whales, but looked like a giant wolf-pig hybrid.",
+    "funFact": "Its skull is 83 cm long, twice the size of a grizzly bear's.",
+    "discovery": {
+      "who": "Kan Chuen Pao",
+      "when": "1923",
+      "where": "Gobi Desert, Mongolia",
+      "age": "45-35 Million Years Ago"
+    },
+    "images": [
+      "/images/andrewsarchus-0.png"
+    ]
+  },
+  {
+    "id": "meganeura",
+    "name": "Meganeura",
+    "scientificName": "Meganeura monyi",
+    "era": "Carboniferous",
+    "period": "Carboniferous",
+    "location": "Europe",
+    "description": "An extinct insect related to dragonflies. With a wingspan of up to 75 cm (2.5 ft), it was one of the largest known flying insects to ever live.",
+    "funFact": "It was a predator that likely fed on other insects and small amphibians.",
+    "discovery": {
+      "who": "Charles Brongniart",
+      "when": "1885",
+      "where": "France",
+      "age": "300 Million Years Ago"
+    },
+    "images": [
+      "/images/meganeura-0.png"
+    ]
+  },
+  {
+    "id": "postosuchus",
+    "name": "Postosuchus",
+    "scientificName": "Postosuchus kirkpatricki",
+    "era": "Late Triassic",
+    "period": "Triassic",
+    "location": "North America",
+    "description": "An apex predator of the Triassic, this rauisuchid archosaur looked like a crocodile that walked on long, erect legs. It hunted early dinosaurs.",
+    "funFact": "It was the top predator in North America before theropod dinosaurs took over.",
+    "discovery": {
+      "who": "Sankar Chatterjee",
+      "when": "1980s",
+      "where": "Texas, USA",
+      "age": "221-203 Million Years Ago"
+    },
+    "images": [
+      "/images/postosuchus-0.png"
     ]
   }
 ]
