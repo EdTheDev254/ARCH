@@ -996,5 +996,43 @@
       "/images/postosuchus-0.jpg",
       "/images/postosuchus-1.jpg"
     ]
+  },
+  {
+    "id": "kaprosuchus",
+    "name": "Kaprosuchus",
+    "scientificName": "Kaprosuchus saharicus",
+    "era": "Late Cretaceous",
+    "period": "Cretaceous",
+    "location": "Africa (Niger)",
+    "description": "An unusual extinct crocodyliform nicknamed 'BoarCroc' for its fierce, boar-like tusks. This terrestrial predator had three sets of tusk-like teeth, forward-facing eyes for depth perception, and robust legs that allowed it to hunt efficiently on land. Unlike modern crocodiles, it was built for a terrestrial lifestyle.",
+    "funFact": "It had forward-facing eyes like a predatory mammal, suggesting it was an active, land-based hunter rather than an ambush predator.",
+    "discovery": {
+      "who": "Paul Sereno and Hans Larsson",
+      "when": "2009",
+      "where": "Echkar Formation, Niger",
+      "age": "95-100 Million Years Ago"
+    },
+    "images": [
+      "/images/kaprosuchus-0.jpg",
+      "/images/kaprosuchus-1.jpg",
+      "/images/kaprosuchus-2.jpg"
+    ]
+  },
+  {
+    "id": "edaphosaurus",
+    "name": "Edaphosaurus",
+    "scientificName": "Edaphosaurus pogonias",
+    "era": "Early Permian",
+    "period": "Permian",
+    "location": "North America, Europe",
+    "description": "One of the earliest large herbivores, Edaphosaurus was a synapsid with a distinctive sail on its back formed by elongated neural spines with cross-bars. Unlike the carnivorous Dimetrodon, it had teeth adapted for grinding vegetation, making it one of the first large plant-eaters.",
+    "funFact": "Its sail evolved independently from Dimetrodon's, an example of parallel evolution for similar functions.",
+    "discovery": {
+      "who": "Edward Drinker Cope",
+      "when": "1882",
+      "where": "Texas Red Beds, Texas, USA",
+      "age": "303-272 Million Years Ago"
+    },
+    "images": []
   }
 ]
