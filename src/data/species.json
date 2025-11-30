@@ -1080,5 +1080,27 @@
       "/images/ichthyostega-1.jpeg",
       "/images/ichthyostega-2.jpg"
     ]
+  },
+  {
+    "id": "inostrancevia",
+    "name": "Inostrancevia",
+    "scientificName": "Inostrancevia alexandri",
+    "era": "Late Permian",
+    "period": "Permian",
+    "location": "Russia",
+    "description": "The largest and most fearsome gorgonopsid, a group of mammal-like reptiles that ruled the late Permian. This apex predator had massive saber-tooth canines up to 15 cm long and a powerful build. Despite its reptilian appearance, it was more closely related to mammals than to dinosaurs or modern reptiles.",
+    "funFact": "Inostrancevia was one of the last and largest gorgonopsids, going extinct during the Great Dying - the worst mass extinction event in Earth's history where 96% of marine species perished.",
+    "discovery": {
+      "who": "Vladimir Amalitsky",
+      "when": "1922",
+      "where": "Northern Dvina River, Russia",
+      "age": "252 Million Years Ago"
+    },
+    "images": [
+      "/images/inostrancevia-0.png",
+      "/images/inostrancevia-1.jpg",
+      "/images/inostrancevia-2.png",
+      "/images/inostrancevia-3.jpg"
+    ]
   }
 ]
