@@ -1013,9 +1013,10 @@
       "age": "95-100 Million Years Ago"
     },
     "images": [
-      "/images/kaprosuchus-0.jpg",
-      "/images/kaprosuchus-1.jpg",
-      "/images/kaprosuchus-2.jpg"
+      "/images/kaprosuchus-0.png",
+      "/images/kaprosuchus-1.png",
+      "/images/kaprosuchus-2.png",
+      "/images/kaprosuchus-3.png"
     ]
   },
   {
@@ -1036,6 +1037,48 @@
     "images": [
       "/images/edaphosaurus-0.png",
       "/images/edaphosaurus-1.png"
+    ]
+  },
+  {
+    "id": "paraceratherium",
+    "name": "Paraceratherium",
+    "scientificName": "Paraceratherium transouralicum",
+    "era": "Paleogene",
+    "period": "Paleogene",
+    "location": "Central Asia",
+    "description": "The largest land mammal to ever walk the Earth, Paraceratherium was a hornless rhinoceros that stood 5 meters tall at the shoulder and weighed up to 20 tons. With its long neck and legs, it browsed on leaves from tall trees in a giraffe-like manner. Despite its massive size, it was a gentle herbivore that dominated the Oligocene landscape of Asia.",
+    "funFact": "This gentle giant was so tall it could look into a second-story window, and its skull alone was over 1.3 meters long!",
+    "discovery": {
+      "who": "Alexei Borissiak",
+      "when": "1923",
+      "where": "Kazakhstan",
+      "age": "34-23 Million Years Ago"
+    },
+    "images": [
+      "/images/paraceratherium-0.webp",
+      "/images/paraceratherium-1.webp",
+      "/images/paraceratherium-2.webp"
+    ]
+  },
+  {
+    "id": "ichthyostega",
+    "name": "Ichthyostega",
+    "scientificName": "Ichthyostega stensioei",
+    "era": "Devonian",
+    "period": "Devonian",
+    "location": "Greenland",
+    "description": "One of the first four-limbed vertebrates to walk on land, Ichthyostega represents a crucial transition between fish and land-dwelling tetrapods. It had both lungs and gills, a fish-like tail, and sturdy limbs with digits. While it could move on land, it likely spent much of its time in shallow water, hunting for fish and invertebrates.",
+    "funFact": "Ichthyostega had seven digits on its hind feet - more than any living tetrapod! Scientists still debate how it used these unusual feet.",
+    "discovery": {
+      "who": "Gunnar Säve-Söderbergh",
+      "when": "1932",
+      "where": "East Greenland",
+      "age": "374-359 Million Years Ago"
+    },
+    "images": [
+      "/images/ichthyostega-0.webp",
+      "/images/ichthyostega-1.jpeg",
+      "/images/ichthyostega-2.jpg"
     ]
   }
 ]
