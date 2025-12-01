@@ -106,6 +106,12 @@ const SpeciesDetail = () => {
                                     <span style={{ display: 'block', fontSize: '0.7rem', textTransform: 'uppercase', color: 'var(--text-secondary)', marginBottom: '0.2rem' }}>Location</span>
                                     <span style={{ fontSize: '1rem' }}>{species.discovery.where}</span>
                                 </div>
+                                {species.dateAdded && (
+                                    <div style={{ gridColumn: '1 / -1', marginTop: '0.5rem', paddingTop: '0.5rem', borderTop: '1px dashed rgba(255,255,255,0.1)' }}>
+                                        <span style={{ display: 'block', fontSize: '0.7rem', textTransform: 'uppercase', color: 'var(--text-secondary)', marginBottom: '0.2rem' }}>Cataloged On</span>
+                                        <span style={{ fontSize: '0.9rem', opacity: 0.8 }}>{new Date(species.dateAdded).toLocaleDateString()}</span>
+                                    </div>
+                                )}
                             </div>
                         </div>
 

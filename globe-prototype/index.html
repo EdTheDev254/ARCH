@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ARCH.LOG | Species Record</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400&display=swap"
+        rel="stylesheet">
+
+    <!-- Dependencies -->
+    <script src="//unpkg.com/globe.gl"></script>
+
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background-color: #020202;
+            font-family: 'Playfair Display', serif;
+            color: #ffffff;
+        }
+
+        #ui-layer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 10;
+        }
+
+        .header {
+            position: absolute;
+            top: 40px;
+            left: 50px;
+        }
+
+        .logo {
+            font-family: 'Cinzel', serif;
+            font-weight: 700;
+            font-size: 24px;
+            letter-spacing: 2px;
+            color: #fff;
+        }
+
+        .nav {
+            position: absolute;
+            top: 45px;
+            right: 50px;
+            font-family: 'Lato', sans-serif;
+            font-size: 11px;
+            letter-spacing: 2px;
+            color: #888;
+            pointer-events: auto;
+        }
+
+        .nav span {
+            margin-left: 30px;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .nav span:hover {
+            color: #C5A059;
+        }
+
+        .hero {
+            position: absolute;
+            top: 12%;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+        }
+
+        .hero-count {
+            font-family: 'Lato', sans-serif;
+            font-style: italic;
+            font-size: 13px;
+            color: #666;
+            margin-bottom: 10px;
+        }
+
+        .hero h1 {
+            font-size: 50px;
+            margin: 0;
+            font-weight: 400;
+            line-height: 1;
+        }
+
+        .hero h1 span {
+            color: #C5A059;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-family: 'Lato', sans-serif;
+            font-size: 13px;
+            color: #555;
+            margin-top: 10px;
+        }
+
+        .info-card {
+            position: absolute;
+            bottom: 60px;
+            left: 60px;
+            width: 280px;
+            padding: 25px;
+            border-left: 2px solid #C5A059;
+            background: linear-gradient(90deg, rgba(10, 10, 10, 0.95), transparent);
+            pointer-events: auto;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease;
+        }
+
+        .info-card.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .card-eyebrow {
+            font-family: 'Cinzel', serif;
+            color: #C5A059;
+            font-size: 10px;
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+        }
+
+        .card-title {
+            font-size: 26px;
+            font-style: italic;
+            margin: 0 0 12px 0;
+            color: #fff;
+        }
+
+        .card-desc {
+            font-family: 'Lato', sans-serif;
+            font-size: 12px;
+            line-height: 1.6;
+            color: #bbb;
+        }
+
+        .scene-tooltip {
+            background: rgba(5, 5, 5, 0.95) !important;
+            border: 1px solid #C5A059 !important;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
+            border-radius: 0 !important;
+            padding: 0 !important;
+            pointer-events: none !important;
+            margin-top: 15px;
+        }
+
+        .tooltip-container {
+            padding: 12px 15px;
+            text-align: left;
+            font-family: 'Lato', sans-serif;
+        }
+
+        .tooltip-title {
+            font-family: 'Cinzel', serif;
+            color: #fff;
+            font-weight: 700;
+            font-size: 14px;
+            border-bottom: 1px solid #333;
+            padding-bottom: 5px;
+            margin-bottom: 5px;
+            letter-spacing: 1px;
+        }
+
+        .tooltip-row {
+            font-size: 11px;
+            color: #aaa;
+            margin-bottom: 2px;
+        }
+
+        .tooltip-val {
+            color: #C5A059;
+            font-weight: bold;
+        }
+
+        #loading {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #444;
+            font-family: 'Lato', sans-serif;
+            font-size: 12px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="ui-layer">
+        <div class="header">
+            <div class="logo">ARCH.LOG</div>
+        </div>
+        <div class="nav">
+            <span>COLLECTION</span>
+            <span>TIMELINE</span>
+            <span>ABOUT</span>
+        </div>
+        <div class="hero">
+            <div class="hero-count">Accessing Global Database...</div>
+            <h1>Extinct <span>Record</span></h1>
+            <p>Hover to identify. Click to retrieve full record.</p>
+        </div>
+
+        <div id="info-card" class="info-card">
+            <div class="card-eyebrow" id="c-period">PERIOD</div>
+            <h2 class="card-title" id="c-name">Species Name</h2>
+            <div class="card-desc" id="c-desc">Description goes here.</div>
+        </div>
+    </div>
+
+    <div id="loading">GENERATING WIREFRAME...</div>
+    <div id="globeViz"></div>
+
+    <script>
+        const speciesData = [
+            { name: "Anomalocaris", period: "CAMBRIAN", lat: 51.4, lng: -116.5, year: 1892, discoverer: "J.F. Whiteaves", desc: "The 'Odd Shrimp'. Apex predator of the Cambrian seas." },
+            { name: "Dunkleosteus", period: "DEVONIAN", lat: 41.5, lng: -81.7, year: 1873, discoverer: "Jay Terrell", desc: "A massive hyper-carnivorous armored fish." },
+            { name: "Meganeura", period: "CARBONIFEROUS", lat: 46.3, lng: 2.7, year: 1880, discoverer: "Charles Brongniart", desc: "Dragonfly-like insect with a 70cm wingspan." },
+            { name: "Dimetrodon", period: "PERMIAN", lat: 33.6, lng: -99.3, year: 1878, discoverer: "Edward Drinker Cope", desc: "Sail-backed synapsid, predating dinosaurs." },
+            { name: "Archaeopteryx", period: "JURASSIC", lat: 48.9, lng: 11.0, year: 1861, discoverer: "Hermann von Meyer", desc: "The transitional fossil between dinosaurs and birds." },
+            { name: "Velociraptor", period: "CRETACEOUS", lat: 44.0, lng: 105.0, year: 1923, discoverer: "Peter Kaisen", desc: "Small, feathered dromaeosaurid dinosaur." },
+            { name: "Smilodon", period: "PLEISTOCENE", lat: 34.0, lng: -118.3, year: 1842, discoverer: "Peter Wilhelm Lund", desc: "The Saber-toothed Cat of the Ice Age." },
+            { name: "Diprotodon", period: "PLEISTOCENE", lat: -25.0, lng: 135.0, year: 1838, discoverer: "Sir Thomas Mitchell", desc: "The largest marsupial to ever live." },
+            { name: "Megalodon", period: "MIOCENE", lat: 10.0, lng: -140.0, year: 1843, discoverer: "Louis Agassiz", desc: "An extinct species of mackerel shark." }
+        ];
+
+        document.getElementById('loading').style.display = 'none';
+
+        // Track focused location for beacon
+        let focusedLocation = null;
+
+        const world = Globe()
+            (document.getElementById('globeViz'))
+
+            .backgroundColor('#020202')
+            .showAtmosphere(false)
+            .globeImageUrl('//unpkg.com/three-globe/example/img/earth-dark.jpg')
+            .bumpImageUrl('//unpkg.com/three-globe/example/img/earth-topology.png')
+
+            // Static markers
+            .htmlElementsData(speciesData)
+            .htmlElement(d => {
+                const el = document.createElement('div');
+                el.innerHTML = '●';
+                el.style.color = '#C5A059';
+                el.style.fontSize = '16px';
+                el.style.cursor = 'pointer';
+                el.style.pointerEvents = 'auto';
+                el.style.userSelect = 'none';
+                el.style.textShadow = '0 0 8px #C5A059';
+                el.onclick = () => {
+                    focusedLocation = d;
+                    world.pointOfView({ lat: d.lat, lng: d.lng, altitude: 1.8 }, 1200);
+                    resetAutoRotateTimer();
+                    updateCard(d);
+                    updateBeacon();
+                };
+                return el;
+            })
+            .htmlAltitude(0.005)
+
+            // Beacon ring (initially empty)
+            .ringsData([])
+            .ringColor(() => '#C5A059')
+            .ringMaxRadius(8)
+            .ringPropagationSpeed(2)
+            .ringRepeatPeriod(1200)
+
+            // Interaction points for tooltip
+            .pointsData(speciesData)
+            .pointColor(() => 'transparent')
+            .pointRadius(2)
+            .pointAltitude(0.005)
+
+            .pointLabel(d => `
+            <div class="tooltip-container">
+                <div class="tooltip-title">${d.name.toUpperCase()}</div>
+                <div class="tooltip-row">DISCOVERED: <span class="tooltip-val">${d.year}</span></div>
+                <div class="tooltip-row">BY: <span class="tooltip-val">${d.discoverer}</span></div>
+            </div>
+        `)
+
+            .onPointClick(d => {
+                focusedLocation = d;
+                world.pointOfView({ lat: d.lat, lng: d.lng, altitude: 1.8 }, 1200);
+                resetAutoRotateTimer();
+                updateCard(d);
+                updateBeacon();
+            });
+
+        // Controls
+        world.controls().autoRotate = true;
+        world.controls().autoRotateSpeed = 0.4;
+
+        world.pointOfView({ lat: 20, lng: 0, altitude: 2.5 });
+
+        // Auto-rotate timer management
+        let autoRotateTimer;
+
+        function resetAutoRotateTimer() {
+            world.controls().autoRotate = false;
+            clearTimeout(autoRotateTimer);
+
+            autoRotateTimer = setTimeout(() => {
+                world.controls().autoRotate = true;
+            }, 1000);
+        }
+
+        world.controls().addEventListener('start', () => {
+            resetAutoRotateTimer();
+        });
+
+        function updateCard(d) {
+            const card = document.getElementById('info-card');
+            document.getElementById('c-period').innerText = d.period;
+            document.getElementById('c-name').innerText = d.name;
+            document.getElementById('c-desc').innerText = d.desc;
+            card.classList.add('active');
+        }
+
+        function updateBeacon() {
+            if (focusedLocation) {
+                world.ringsData([focusedLocation]);
+            }
+        }
+
+        window.addEventListener('resize', () => {
+            world.width(window.innerWidth);
+            world.height(window.innerHeight);
+        });
+
+    </script>
+</body>
+
+</html>

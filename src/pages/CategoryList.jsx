@@ -4,6 +4,8 @@ import { motion } from 'framer-motion';
 import speciesData from '../data/species.json';
 import SearchBar from '../components/SearchBar';
 
+import GlobeViz from '../components/GlobeViz';
+
 const CategoryList = () => {
     // Extract unique periods and sort them chronologically (custom order)
     const periodOrder = ['Cambrian', 'Devonian', 'Carboniferous', 'Permian', 'Triassic', 'Jurassic', 'Cretaceous', 'Paleogene', 'Neogene', 'Pleistocene', 'Holocene'];
@@ -13,52 +15,55 @@ const CategoryList = () => {
     });
 
     return (
-        <div className="container">
-            <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 1 }}
-                style={{ marginBottom: '4rem', textAlign: 'center', paddingTop: '4rem' }}
-            >
-                <p style={{ color: '#999', fontStyle: 'italic', fontSize: '0.9rem', marginBottom: '0.5rem' }}>
-                    {speciesData.length} total species on record
-                </p>
-                <h1 style={{ marginBottom: '1rem' }}>Extinct <span style={{ color: 'var(--accent-color)' }}>Record</span></h1>
-                <p style={{ color: 'var(--text-secondary)', maxWidth: '600px', margin: '1rem auto 0' }}>
-                    Select a time period to explore the catalog of lost life.
-                </p>
-            </motion.div>
+        <>
+            <GlobeViz />
+            <div className="container">
+                <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 1 }}
+                    style={{ marginBottom: '4rem', textAlign: 'center', paddingTop: '2rem' }}
+                >
+                    <p style={{ color: '#999', fontStyle: 'italic', fontSize: '0.9rem', marginBottom: '0.5rem' }}>
+                        {speciesData.length} total species on record
+                    </p>
+                    <h1 style={{ marginBottom: '1rem' }}>Extinct <span style={{ color: 'var(--accent-color)' }}>Record</span></h1>
+                    <p style={{ color: 'var(--text-secondary)', maxWidth: '600px', margin: '1rem auto 0' }}>
+                        Select a time period to explore the catalog of lost life.
+                    </p>
+                </motion.div>
 
-            <div className="search-wrapper">
-                <SearchBar />
-            </div>
+                <div className="search-wrapper">
+                    <SearchBar />
+                </div>
 
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', maxWidth: '800px', margin: '0 auto', paddingBottom: '4rem' }}>
-                {periods.map((period, index) => (
-                    <Link key={period} to={`/category/${period}`}>
-                        <motion.div
-                            initial={{ x: -50, opacity: 0 }}
-                            animate={{ x: 0, opacity: 1 }}
-                            transition={{ delay: index * 0.1, duration: 0.5 }}
-                            whileHover={{ x: 20, backgroundColor: 'rgba(255,255,255,0.05)', transition: { delay: 0, duration: 0.2 } }}
-                            style={{
-                                padding: '2rem',
-                                borderBottom: '1px solid rgba(255,255,255,0.1)',
-                                display: 'flex',
-                                justifyContent: 'space-between',
-                                alignItems: 'center',
-                                cursor: 'pointer'
-                            }}
-                        >
-                            <h2 style={{ fontSize: '2rem', margin: 0 }}>{period}</h2>
-                            <span style={{ color: 'var(--accent-color)', fontSize: '0.9rem', textTransform: 'uppercase', letterSpacing: '1px' }}>
-                                Explore &rarr;
-                            </span>
-                        </motion.div>
-                    </Link>
-                ))}
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', maxWidth: '800px', margin: '0 auto', paddingBottom: '4rem' }}>
+                    {periods.map((period, index) => (
+                        <Link key={period} to={`/category/${period}`}>
+                            <motion.div
+                                initial={{ x: -50, opacity: 0 }}
+                                animate={{ x: 0, opacity: 1 }}
+                                transition={{ delay: index * 0.1, duration: 0.5 }}
+                                whileHover={{ x: 20, backgroundColor: 'rgba(255,255,255,0.05)', transition: { delay: 0, duration: 0.2 } }}
+                                style={{
+                                    padding: '2rem',
+                                    borderBottom: '1px solid rgba(255,255,255,0.1)',
+                                    display: 'flex',
+                                    justifyContent: 'space-between',
+                                    alignItems: 'center',
+                                    cursor: 'pointer'
+                                }}
+                            >
+                                <h2 style={{ fontSize: '2rem', margin: 0 }}>{period}</h2>
+                                <span style={{ color: 'var(--accent-color)', fontSize: '0.9rem', textTransform: 'uppercase', letterSpacing: '1px' }}>
+                                    Explore &rarr;
+                                </span>
+                            </motion.div>
+                        </Link>
+                    ))}
+                </div>
             </div>
-        </div>
+        </>
     );
 };
 

@@ -23,6 +23,8 @@
 html {
   overflow-x: hidden;
   width: 100%;
+  background-color: #0a0a0a;
+  /* Prevent white flash on load */
 }
 
 body {
@@ -55,6 +57,10 @@ a {
 
 img {
   max-width: 100%;
+}
+
+canvas {
+  background-color: #0a0a0a !important;
 }
 
 /* Utilities */
