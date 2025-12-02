@@ -20,7 +20,7 @@ const GlobeViz = () => {
 
             if (!coords) return null;
 
-            const baseUrl = import.meta.env.BASE_URL.slice(0, -1);
+            const baseUrl = import.meta.env.BASE_URL.slice(0, - 1);
 
             return {
                 name: species.name,
@@ -156,9 +156,12 @@ const GlobeViz = () => {
     useEffect(() => {
         if (isMobile && focusedLocation && containerRef.current) {
             setTimeout(() => {
-                containerRef.current.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
+                const elementTop = containerRef.current.getBoundingClientRect().top + window.pageYOffset;
+                const offsetPosition = elementTop + 100; // Scroll down more to move content up
+
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
                 });
             }, 300);
         }
