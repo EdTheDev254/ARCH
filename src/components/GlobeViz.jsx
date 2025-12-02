@@ -83,31 +83,7 @@ const GlobeViz = () => {
                 .pointColor(() => 'transparent')
                 .pointRadius(2)
                 .pointAltitude(0.005)
-                .pointLabel(d => `
-                    <div style="
-                        background: rgba(5, 5, 5, 0.95);
-                        border: 1px solid #C5A059;
-                        padding: 12px 15px;
-                        font-family: 'Lato', sans-serif;
-                        text-align: left;
-                        max-width: 250px;
-                    ">
-                        <div style="
-                            font-family: 'Cinzel', serif;
-                            color: #fff;
-                            font-weight: 700;
-                            font-size: 14px;
-                            border-bottom: 1px solid #333;
-                            padding-bottom: 5px;
-                            margin-bottom: 5px;
-                            letter-spacing: 1px;
-                        ">${d.name.toUpperCase()}</div>
-                        <div style="font-size: 10px; color: #888; font-style: italic; margin-bottom: 5px;">${d.scientificName || ''}</div>
-                        <div style="font-size: 11px; color: #aaa; margin-bottom: 2px;">LOCATION: <span style="color: #C5A059; font-weight: bold;">${d.location}</span></div>
-                        <div style="font-size: 11px; color: #aaa; margin-bottom: 2px;">DISCOVERED: <span style="color: #C5A059; font-weight: bold;">${d.year}</span></div>
-                        <div style="font-size: 11px; color: #aaa;">BY: <span style="color: #C5A059; font-weight: bold;">${d.discoverer}</span></div>
-                    </div>
-                `)
+                .pointLabel('')
                 .onPointClick(d => {
                     setFocusedLocation(d);
                     world.pointOfView({ lat: d.lat, lng: d.lng, altitude: isMobile ? 2.5 : 1.8 }, 1200);
@@ -327,11 +303,19 @@ const GlobeViz = () => {
                             <div style={{ fontFamily: 'Cinzel, serif', color: '#C5A059', fontSize: '10px', letterSpacing: '2px', marginBottom: '8px' }}>
                                 {focusedLocation.period}
                             </div>
-                            <h2 style={{ fontSize: '26px', fontStyle: 'italic', margin: '0 0 12px 0', color: '#fff', fontFamily: 'Lato, sans-serif' }}>
+                            <h2 style={{ fontSize: '26px', fontStyle: 'italic', margin: '0 0 4px 0', color: '#fff', fontFamily: 'Lato, sans-serif' }}>
                                 {focusedLocation.name}
                             </h2>
-                            <div style={{ fontFamily: 'Lato, sans-serif', fontSize: '12px', lineHeight: '1.6', color: '#bbb' }}>
+                            <div style={{ fontSize: '12px', color: '#888', fontStyle: 'italic', marginBottom: '12px' }}>
+                                {focusedLocation.scientificName}
+                            </div>
+                            <div style={{ fontFamily: 'Lato, sans-serif', fontSize: '12px', lineHeight: '1.6', color: '#bbb', marginBottom: '12px' }}>
                                 {focusedLocation.desc}
+                            </div>
+                            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px', fontSize: '11px', color: '#aaa' }}>
+                                <div>LOCATION: <span style={{ color: '#C5A059', fontWeight: 'bold' }}>{focusedLocation.location}</span></div>
+                                <div>DISCOVERED: <span style={{ color: '#C5A059', fontWeight: 'bold' }}>{focusedLocation.year}</span></div>
+                                <div style={{ gridColumn: '1 / -1' }}>BY: <span style={{ color: '#C5A059', fontWeight: 'bold' }}>{focusedLocation.discoverer}</span></div>
                             </div>
                         </div>
                     </>
