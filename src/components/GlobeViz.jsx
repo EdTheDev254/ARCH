@@ -5,6 +5,7 @@ import { getCoordinatesBySpeciesId, getCoordinatesForLocation } from '../utils/l
 const GlobeViz = () => {
     const globeEl = useRef();
     const containerRef = useRef();
+    const globeContainerRef = useRef();
     const [focusedLocation, setFocusedLocation] = useState(null);
     const [scale, setScale] = useState(1);
     const [isLoaded, setIsLoaded] = useState(false);
@@ -38,7 +39,7 @@ const GlobeViz = () => {
 
     useEffect(() => {
         const initGlobe = () => {
-            if (!window.Globe || !globeEl.current) return;
+            if (!window.Globe || !globeEl.current || !globeContainerRef.current) return;
             if (globeEl.current.innerHTML !== '') return;
 
             const altitude = isMobile ? 2.5 : 1.8;
@@ -51,8 +52,8 @@ const GlobeViz = () => {
                 .atmosphereAltitude(0.15)
                 .globeImageUrl('//unpkg.com/three-globe/example/img/earth-dark.jpg')
                 .bumpImageUrl('//unpkg.com/three-globe/example/img/earth-topology.png')
-                .width(containerRef.current.clientWidth)
-                .height(containerRef.current.clientHeight)
+                .width(globeContainerRef.current.clientWidth)
+                .height(globeContainerRef.current.clientHeight)
 
                 .htmlElementsData(mapData)
                 .htmlElement(d => {
@@ -110,9 +111,9 @@ const GlobeViz = () => {
             world.controls().addEventListener('start', resetAutoRotateTimer);
 
             const handleResize = () => {
-                if (containerRef.current && world) {
-                    world.width(containerRef.current.clientWidth);
-                    world.height(containerRef.current.clientHeight);
+                if (globeContainerRef.current && world) {
+                    world.width(globeContainerRef.current.clientWidth);
+                    world.height(globeContainerRef.current.clientHeight);
                 }
                 setIsMobile(window.innerWidth < 768);
             };
@@ -156,125 +157,141 @@ const GlobeViz = () => {
             ref={containerRef}
             style={{
                 position: 'relative',
-                height: 'min(600px, 60vh)',
+                height: isMobile && focusedLocation ? 'auto' : 'min(600px, 60vh)',
                 width: '100%',
                 backgroundColor: '#0a0a0a',
                 overflow: 'hidden',
                 display: 'flex',
+                flexDirection: isMobile && focusedLocation ? 'column' : 'row',
                 justifyContent: 'center',
                 alignItems: 'center',
                 perspective: '1000px',
                 zIndex: 0
             }}
         >
+            {/* Globe Container */}
             <div
+                ref={globeContainerRef}
                 style={{
-                    position: 'absolute',
-                    top: 0,
-                    left: 0,
+                    position: 'relative',
                     width: '100%',
-                    height: '100%',
-                    backgroundColor: '#0a0a0a',
-                    zIndex: 1000,
-                    opacity: isLoaded ? 0 : 1,
-                    transition: 'opacity 1s ease',
-                    pointerEvents: 'none'
+                    height: isMobile && focusedLocation ? '50vh' : '100%',
+                    minHeight: isMobile && focusedLocation ? '400px' : '100%',
+                    flexShrink: 0
                 }}
-            />
-
-            {/* Interaction Overlay - Mobile Only */}
-            {isMobile && !isInteracting && (
+            >
                 <div
-                    onClick={() => setIsInteracting(true)}
                     style={{
                         position: 'absolute',
                         top: 0,
                         left: 0,
                         width: '100%',
                         height: '100%',
-                        zIndex: 10,
-                        cursor: 'pointer',
-                        display: 'flex',
-                        justifyContent: 'center',
-                        alignItems: 'center',
-                        background: 'rgba(0,0,0,0.1)',
-                        transition: 'background 0.3s'
-                    }}
-                    onMouseEnter={(e) => e.currentTarget.style.background = 'rgba(0,0,0,0.3)'}
-                    onMouseLeave={(e) => e.currentTarget.style.background = 'rgba(0,0,0,0.1)'}
-                >
-                    <div style={{
-                        padding: '12px 24px',
-                        border: '1px solid #C5A059',
-                        background: 'rgba(10,10,10,0.8)',
-                        color: '#C5A059',
-                        fontFamily: 'Cinzel, serif',
-                        letterSpacing: '2px',
-                        fontSize: '14px',
+                        backgroundColor: '#0a0a0a',
+                        zIndex: 1000,
+                        opacity: isLoaded ? 0 : 1,
+                        transition: 'opacity 1s ease',
                         pointerEvents: 'none'
-                    }}>
-                        TAP TO EXPLORE
-                    </div>
-                </div>
-            )}
-
-            {/* Exit Interaction Button - Mobile Only */}
-            {isMobile && isInteracting && (
-                <button
-                    onClick={(e) => {
-                        e.stopPropagation();
-                        setIsInteracting(false);
-                        setFocusedLocation(null);
                     }}
+                />
+
+                {/* Interaction Overlay - Mobile Only */}
+                {isMobile && !isInteracting && (
+                    <div
+                        onClick={() => setIsInteracting(true)}
+                        style={{
+                            position: 'absolute',
+                            top: 0,
+                            left: 0,
+                            width: '100%',
+                            height: '100%',
+                            zIndex: 10,
+                            cursor: 'pointer',
+                            display: 'flex',
+                            justifyContent: 'center',
+                            alignItems: 'center',
+                            background: 'rgba(0,0,0,0.1)',
+                            transition: 'background 0.3s'
+                        }}
+                        onMouseEnter={(e) => e.currentTarget.style.background = 'rgba(0,0,0,0.3)'}
+                        onMouseLeave={(e) => e.currentTarget.style.background = 'rgba(0,0,0,0.1)'}
+                    >
+                        <div style={{
+                            padding: '12px 24px',
+                            border: '1px solid #C5A059',
+                            background: 'rgba(10,10,10,0.8)',
+                            color: '#C5A059',
+                            fontFamily: 'Cinzel, serif',
+                            letterSpacing: '2px',
+                            fontSize: '14px',
+                            pointerEvents: 'none'
+                        }}>
+                            TAP TO EXPLORE
+                        </div>
+                    </div>
+                )}
+
+                {/* Exit Interaction Button - Mobile Only */}
+                {isMobile && isInteracting && (
+                    <button
+                        onClick={(e) => {
+                            e.stopPropagation();
+                            setIsInteracting(false);
+                            setFocusedLocation(null);
+                        }}
+                        style={{
+                            position: 'absolute',
+                            top: '20px',
+                            right: '20px',
+                            zIndex: 20,
+                            background: 'rgba(10,10,10,0.8)',
+                            border: '1px solid #C5A059',
+                            color: '#C5A059',
+                            padding: '8px 16px',
+                            cursor: 'pointer',
+                            fontFamily: 'Cinzel, serif',
+                            fontSize: '12px'
+                        }}
+                    >
+                        EXIT EXPLORATION
+                    </button>
+                )}
+
+                <div
                     style={{
-                        position: 'absolute',
-                        top: '20px',
-                        right: '20px',
-                        zIndex: 20,
-                        background: 'rgba(10,10,10,0.8)',
-                        border: '1px solid #C5A059',
-                        color: '#C5A059',
-                        padding: '8px 16px',
-                        cursor: 'pointer',
-                        fontFamily: 'Cinzel, serif',
-                        fontSize: '12px'
+                        transform: `scale(${scale})`,
+                        transition: 'transform 0.1s ease-out',
+                        transformOrigin: 'center center',
+                        width: '100%',
+                        height: '100%',
+                        pointerEvents: !isMobile || isInteracting ? 'auto' : 'none'
                     }}
                 >
-                    EXIT EXPLORATION
-                </button>
-            )}
-
-            <div
-                style={{
-                    transform: `scale(${scale})`,
-                    transition: 'transform 0.1s ease-out',
-                    transformOrigin: 'center center',
-                    width: '100%',
-                    height: '100%',
-                    pointerEvents: !isMobile || isInteracting ? 'auto' : 'none'
-                }}
-            >
-                <div ref={globeEl} />
+                    <div ref={globeEl} />
+                </div>
             </div>
 
+            {/* Info Panel */}
             <div
                 style={{
-                    position: 'absolute',
-                    bottom: '60px',
-                    left: '60px',
-                    width: '350px',
-                    maxWidth: '80%',
+                    position: isMobile && focusedLocation ? 'relative' : 'absolute',
+                    bottom: isMobile && focusedLocation ? 'auto' : '60px',
+                    left: isMobile && focusedLocation ? 'auto' : '60px',
+                    width: isMobile && focusedLocation ? '100%' : '350px',
+                    maxWidth: isMobile && focusedLocation ? '100%' : '80%',
                     padding: '25px',
                     paddingLeft: '25px',
-                    borderLeft: '2px solid #C5A059',
-                    background: 'linear-gradient(90deg, rgba(10,10,10,0.95), transparent)',
-                    pointerEvents: 'none',
+                    borderLeft: isMobile && focusedLocation ? 'none' : '2px solid #C5A059',
+                    borderTop: isMobile && focusedLocation ? '2px solid #C5A059' : 'none',
+                    background: isMobile && focusedLocation ? '#0a0a0a' : 'linear-gradient(90deg, rgba(10,10,10,0.95), transparent)',
+                    pointerEvents: isMobile && focusedLocation ? 'auto' : 'none',
                     opacity: focusedLocation ? 1 : 0,
                     transform: focusedLocation ? 'translateY(0)' : 'translateY(20px)',
                     transition: 'all 0.5s ease',
-                    display: 'flex',
+                    display: focusedLocation ? 'flex' : 'none',
                     gap: '20px',
-                    flexDirection: isMobile ? 'column' : 'row'
+                    flexDirection: isMobile ? 'column' : 'row',
+                    zIndex: 5
                 }}
             >
                 {focusedLocation && (
