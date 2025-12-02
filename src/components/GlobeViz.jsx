@@ -152,6 +152,18 @@ const GlobeViz = () => {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
+    // Auto-scroll to show globe and detail card on mobile when location is focused
+    useEffect(() => {
+        if (isMobile && focusedLocation && containerRef.current) {
+            setTimeout(() => {
+                containerRef.current.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }, 300);
+        }
+    }, [focusedLocation, isMobile]);
+
     return (
         <div
             ref={containerRef}
