@@ -157,7 +157,7 @@ const GlobeViz = () => {
         if (isMobile && focusedLocation && containerRef.current) {
             setTimeout(() => {
                 const elementTop = containerRef.current.getBoundingClientRect().top + window.pageYOffset;
-                const offsetPosition = elementTop + 35; // Scroll down more to move content up
+                const offsetPosition = elementTop + 75; // Scroll down more to move content up
 
                 window.scrollTo({
                     top: offsetPosition,
