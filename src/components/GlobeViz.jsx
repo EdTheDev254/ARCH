@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import speciesData from '../data/species.json';
+import { getCoordinatesBySpeciesId, getCoordinatesForLocation } from '../utils/locationCoordinates';
 
 const GlobeViz = () => {
     const globeEl = useRef();
@@ -8,26 +9,32 @@ const GlobeViz = () => {
     const [scale, setScale] = useState(1);
     const [isLoaded, setIsLoaded] = useState(false);
 
-    // Use the specific test data from the prototype as requested
-    const mapData = [
-        { name: "Anomalocaris", period: "CAMBRIAN", lat: 51.4, lng: -116.5, year: 1892, discoverer: "J.F. Whiteaves", desc: "The 'Odd Shrimp'. Apex predator of the Cambrian seas." },
-        { name: "Dunkleosteus", period: "DEVONIAN", lat: 41.5, lng: -81.7, year: 1873, discoverer: "Jay Terrell", desc: "A massive hyper-carnivorous armored fish." },
-        { name: "Meganeura", period: "CARBONIFEROUS", lat: 46.3, lng: 2.7, year: 1880, discoverer: "Charles Brongniart", desc: "Dragonfly-like insect with a 70cm wingspan." },
-        { name: "Dimetrodon", period: "PERMIAN", lat: 33.6, lng: -99.3, year: 1878, discoverer: "Edward Drinker Cope", desc: "Sail-backed synapsid, predating dinosaurs." },
-        { name: "Archaeopteryx", period: "JURASSIC", lat: 48.9, lng: 11.0, year: 1861, discoverer: "Hermann von Meyer", desc: "The transitional fossil between dinosaurs and birds." },
-        { name: "Velociraptor", period: "CRETACEOUS", lat: 44.0, lng: 105.0, year: 1923, discoverer: "Peter Kaisen", desc: "Small, feathered dromaeosaurid dinosaur." },
-        { name: "Smilodon", period: "PLEISTOCENE", lat: 34.0, lng: -118.3, year: 1842, discoverer: "Peter Wilhelm Lund", desc: "The Saber-toothed Cat of the Ice Age." },
-        { name: "Diprotodon", period: "PLEISTOCENE", lat: -25.0, lng: 135.0, year: 1838, discoverer: "Sir Thomas Mitchell", desc: "The largest marsupial to ever live." },
-        { name: "Megalodon", period: "MIOCENE", lat: 10.0, lng: -140.0, year: 1843, discoverer: "Louis Agassiz", desc: "An extinct species of mackerel shark." },
-        { name: "Kaprosuchus", period: "CRETACEOUS", lat: 16.0, lng: 8.0, year: 2009, discoverer: "Sereno & Larsson", desc: "BoarCroc - terrestrial crocodile from Niger." },
-        { name: "Inostrancevia", period: "PERMIAN", lat: 64.5, lng: 40.5, year: 1922, discoverer: "Vladimir Amalitsky", desc: "Largest gorgonopsid saber-tooth predator." }
-    ];
+    // Transform species data to include precise coordinates
+    const mapData = speciesData
+        .map(species => {
+            const coords = getCoordinatesBySpeciesId(species.id) ||
+                getCoordinatesForLocation(species.location || species.discovery?.where);
+
+            if (!coords) return null;
+
+            return {
+                name: species.name,
+                period: species.period.toUpperCase(),
+                lat: coords.lat,
+                lng: coords.lng,
+                year: species.discovery?.when || 'Unknown',
+                discoverer: species.discovery?.who || 'Unknown',
+                desc: species.description.substring(0, 150) + '...',
+                scientificName: species.scientificName,
+                location: species.location || species.discovery?.where || 'Unknown',
+                image: species.images && species.images.length > 0 ? species.images[0] : null
+            };
+        })
+        .filter(Boolean);
 
     useEffect(() => {
         const initGlobe = () => {
             if (!window.Globe || !globeEl.current) return;
-
-            // Check if already initialized
             if (globeEl.current.innerHTML !== '') return;
 
             const world = window.Globe()
@@ -77,6 +84,7 @@ const GlobeViz = () => {
                         padding: 12px 15px;
                         font-family: 'Lato', sans-serif;
                         text-align: left;
+                        max-width: 250px;
                     ">
                         <div style="
                             font-family: 'Cinzel', serif;
@@ -88,6 +96,8 @@ const GlobeViz = () => {
                             margin-bottom: 5px;
                             letter-spacing: 1px;
                         ">${d.name.toUpperCase()}</div>
+                        <div style="font-size: 10px; color: #888; font-style: italic; margin-bottom: 5px;">${d.scientificName || ''}</div>
+                        <div style="font-size: 11px; color: #aaa; margin-bottom: 2px;">LOCATION: <span style="color: #C5A059; font-weight: bold;">${d.location}</span></div>
                         <div style="font-size: 11px; color: #aaa; margin-bottom: 2px;">DISCOVERED: <span style="color: #C5A059; font-weight: bold;">${d.year}</span></div>
                         <div style="font-size: 11px; color: #aaa;">BY: <span style="color: #C5A059; font-weight: bold;">${d.discoverer}</span></div>
                     </div>
@@ -98,15 +108,12 @@ const GlobeViz = () => {
                     resetAutoRotateTimer();
                 })
                 .onGlobeReady(() => {
-                    // Globe is ready, fade out the curtain
                     setTimeout(() => setIsLoaded(true), 500);
                 });
 
             world.controls().autoRotate = true;
             world.controls().autoRotateSpeed = 0.4;
             world.controls().enableZoom = false;
-
-            // Closer altitude = larger earth (was 2.5)
             world.pointOfView({ lat: 20, lng: 0, altitude: 1.8 });
 
             let autoRotateTimer;
@@ -115,7 +122,7 @@ const GlobeViz = () => {
                 clearTimeout(autoRotateTimer);
                 autoRotateTimer = setTimeout(() => {
                     world.controls().autoRotate = true;
-                }, 1000); // Reduced from 3000ms to 1000ms
+                }, 1000);
             }
 
             world.controls().addEventListener('start', resetAutoRotateTimer);
@@ -139,7 +146,7 @@ const GlobeViz = () => {
             }, 100);
             return () => clearInterval(interval);
         }
-    }, []);
+    }, [mapData]);
 
     useEffect(() => {
         if (globeEl.current && globeEl.current.world && focusedLocation) {
@@ -165,7 +172,7 @@ const GlobeViz = () => {
                 position: 'relative',
                 height: '600px',
                 width: '100%',
-                backgroundColor: '#0a0a0a', // Prevent white flash on load
+                backgroundColor: '#0a0a0a',
                 overflow: 'hidden',
                 display: 'flex',
                 justifyContent: 'center',
@@ -174,7 +181,6 @@ const GlobeViz = () => {
                 zIndex: 0
             }}
         >
-            {/* Loading Curtain */}
             <div
                 style={{
                     position: 'absolute',
@@ -205,26 +211,51 @@ const GlobeViz = () => {
                     position: 'absolute',
                     bottom: '60px',
                     left: '60px',
-                    width: '280px',
+                    width: '350px',
                     padding: '25px',
+                    paddingLeft: '25px',
                     borderLeft: '2px solid #C5A059',
                     background: 'linear-gradient(90deg, rgba(10,10,10,0.95), transparent)',
                     pointerEvents: 'none',
                     opacity: focusedLocation ? 1 : 0,
                     transform: focusedLocation ? 'translateY(0)' : 'translateY(20px)',
-                    transition: 'all 0.5s ease'
+                    transition: 'all 0.5s ease',
+                    display: 'flex',
+                    gap: '20px'
                 }}
             >
                 {focusedLocation && (
                     <>
-                        <div style={{ fontFamily: 'Cinzel, serif', color: '#C5A059', fontSize: '10px', letterSpacing: '2px', marginBottom: '8px' }}>
-                            {focusedLocation.period}
-                        </div>
-                        <h2 style={{ fontSize: '26px', fontStyle: 'italic', margin: '0 0 12px 0', color: '#fff' }}>
-                            {focusedLocation.name}
-                        </h2>
-                        <div style={{ fontFamily: 'Lato, sans-serif', fontSize: '12px', lineHeight: '1.6', color: '#bbb' }}>
-                            {focusedLocation.desc}
+                        {focusedLocation.image && (
+                            <div style={{
+                                width: '100px',
+                                height: '100px',
+                                flexShrink: 0,
+                                border: '2px solid #C5A059',
+                                overflow: 'hidden',
+                                backgroundColor: '#1a1a1a'
+                            }}>
+                                <img
+                                    src={focusedLocation.image}
+                                    alt={focusedLocation.name}
+                                    style={{
+                                        width: '100%',
+                                        height: '100%',
+                                        objectFit: 'cover'
+                                    }}
+                                />
+                            </div>
+                        )}
+                        <div style={{ flex: 1 }}>
+                            <div style={{ fontFamily: 'Cinzel, serif', color: '#C5A059', fontSize: '10px', letterSpacing: '2px', marginBottom: '8px' }}>
+                                {focusedLocation.period}
+                            </div>
+                            <h2 style={{ fontSize: '26px', fontStyle: 'italic', margin: '0 0 12px 0', color: '#fff', fontFamily: 'Lato, sans-serif' }}>
+                                {focusedLocation.name}
+                            </h2>
+                            <div style={{ fontFamily: 'Lato, sans-serif', fontSize: '12px', lineHeight: '1.6', color: '#bbb' }}>
+                                {focusedLocation.desc}
+                            </div>
                         </div>
                     </>
                 )}
