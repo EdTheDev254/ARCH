@@ -8,6 +8,8 @@ const GlobeViz = () => {
     const [focusedLocation, setFocusedLocation] = useState(null);
     const [scale, setScale] = useState(1);
     const [isLoaded, setIsLoaded] = useState(false);
+    const [isInteracting, setIsInteracting] = useState(false);
+    const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
 
     // Transform species data to include precise coordinates
     const mapData = speciesData
@@ -16,6 +18,8 @@ const GlobeViz = () => {
                 getCoordinatesForLocation(species.location || species.discovery?.where);
 
             if (!coords) return null;
+
+            const baseUrl = import.meta.env.BASE_URL.slice(0, -1);
 
             return {
                 name: species.name,
@@ -27,7 +31,7 @@ const GlobeViz = () => {
                 desc: species.description.substring(0, 150) + '...',
                 scientificName: species.scientificName,
                 location: species.location || species.discovery?.where || 'Unknown',
-                image: species.images && species.images.length > 0 ? species.images[0] : null
+                image: species.images && species.images.length > 0 ? baseUrl + species.images[0] : null
             };
         })
         .filter(Boolean);
@@ -37,6 +41,8 @@ const GlobeViz = () => {
             if (!window.Globe || !globeEl.current) return;
             if (globeEl.current.innerHTML !== '') return;
 
+            const altitude = isMobile ? 2.5 : 1.8;
+
             const world = window.Globe()
                 (globeEl.current)
                 .backgroundColor('#0a0a0a')
@@ -45,8 +51,8 @@ const GlobeViz = () => {
                 .atmosphereAltitude(0.15)
                 .globeImageUrl('//unpkg.com/three-globe/example/img/earth-dark.jpg')
                 .bumpImageUrl('//unpkg.com/three-globe/example/img/earth-topology.png')
-                .width(window.innerWidth)
-                .height(600)
+                .width(containerRef.current.clientWidth)
+                .height(containerRef.current.clientHeight)
 
                 .htmlElementsData(mapData)
                 .htmlElement(d => {
@@ -60,7 +66,7 @@ const GlobeViz = () => {
                     el.style.textShadow = '0 0 8px #C5A059';
                     el.onclick = () => {
                         setFocusedLocation(d);
-                        world.pointOfView({ lat: d.lat, lng: d.lng, altitude: 1.8 }, 1200);
+                        world.pointOfView({ lat: d.lat, lng: d.lng, altitude: isMobile ? 2.5 : 1.8 }, 1200);
                         resetAutoRotateTimer();
                     };
                     return el;
@@ -104,7 +110,7 @@ const GlobeViz = () => {
                 `)
                 .onPointClick(d => {
                     setFocusedLocation(d);
-                    world.pointOfView({ lat: d.lat, lng: d.lng, altitude: 1.8 }, 1200);
+                    world.pointOfView({ lat: d.lat, lng: d.lng, altitude: isMobile ? 2.5 : 1.8 }, 1200);
                     resetAutoRotateTimer();
                 })
                 .onGlobeReady(() => {
@@ -114,7 +120,7 @@ const GlobeViz = () => {
             world.controls().autoRotate = true;
             world.controls().autoRotateSpeed = 0.4;
             world.controls().enableZoom = false;
-            world.pointOfView({ lat: 20, lng: 0, altitude: 1.8 });
+            world.pointOfView({ lat: 20, lng: 0, altitude: altitude });
 
             let autoRotateTimer;
             function resetAutoRotateTimer() {
@@ -128,7 +134,11 @@ const GlobeViz = () => {
             world.controls().addEventListener('start', resetAutoRotateTimer);
 
             const handleResize = () => {
-                world.width(window.innerWidth);
+                if (containerRef.current && world) {
+                    world.width(containerRef.current.clientWidth);
+                    world.height(containerRef.current.clientHeight);
+                }
+                setIsMobile(window.innerWidth < 768);
             };
             window.addEventListener('resize', handleResize);
 
@@ -170,7 +180,7 @@ const GlobeViz = () => {
             ref={containerRef}
             style={{
                 position: 'relative',
-                height: '600px',
+                height: 'min(600px, 60vh)',
                 width: '100%',
                 backgroundColor: '#0a0a0a',
                 overflow: 'hidden',
@@ -196,11 +206,76 @@ const GlobeViz = () => {
                 }}
             />
 
+            {/* Interaction Overlay - Mobile Only */}
+            {isMobile && !isInteracting && (
+                <div
+                    onClick={() => setIsInteracting(true)}
+                    style={{
+                        position: 'absolute',
+                        top: 0,
+                        left: 0,
+                        width: '100%',
+                        height: '100%',
+                        zIndex: 10,
+                        cursor: 'pointer',
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        background: 'rgba(0,0,0,0.1)',
+                        transition: 'background 0.3s'
+                    }}
+                    onMouseEnter={(e) => e.currentTarget.style.background = 'rgba(0,0,0,0.3)'}
+                    onMouseLeave={(e) => e.currentTarget.style.background = 'rgba(0,0,0,0.1)'}
+                >
+                    <div style={{
+                        padding: '12px 24px',
+                        border: '1px solid #C5A059',
+                        background: 'rgba(10,10,10,0.8)',
+                        color: '#C5A059',
+                        fontFamily: 'Cinzel, serif',
+                        letterSpacing: '2px',
+                        fontSize: '14px',
+                        pointerEvents: 'none'
+                    }}>
+                        TAP TO EXPLORE
+                    </div>
+                </div>
+            )}
+
+            {/* Exit Interaction Button - Mobile Only */}
+            {isMobile && isInteracting && (
+                <button
+                    onClick={(e) => {
+                        e.stopPropagation();
+                        setIsInteracting(false);
+                        setFocusedLocation(null);
+                    }}
+                    style={{
+                        position: 'absolute',
+                        top: '20px',
+                        right: '20px',
+                        zIndex: 20,
+                        background: 'rgba(10,10,10,0.8)',
+                        border: '1px solid #C5A059',
+                        color: '#C5A059',
+                        padding: '8px 16px',
+                        cursor: 'pointer',
+                        fontFamily: 'Cinzel, serif',
+                        fontSize: '12px'
+                    }}
+                >
+                    EXIT EXPLORATION
+                </button>
+            )}
+
             <div
                 style={{
                     transform: `scale(${scale})`,
                     transition: 'transform 0.1s ease-out',
-                    transformOrigin: 'center center'
+                    transformOrigin: 'center center',
+                    width: '100%',
+                    height: '100%',
+                    pointerEvents: !isMobile || isInteracting ? 'auto' : 'none'
                 }}
             >
                 <div ref={globeEl} />
@@ -212,6 +287,7 @@ const GlobeViz = () => {
                     bottom: '60px',
                     left: '60px',
                     width: '350px',
+                    maxWidth: '80%',
                     padding: '25px',
                     paddingLeft: '25px',
                     borderLeft: '2px solid #C5A059',
@@ -221,7 +297,8 @@ const GlobeViz = () => {
                     transform: focusedLocation ? 'translateY(0)' : 'translateY(20px)',
                     transition: 'all 0.5s ease',
                     display: 'flex',
-                    gap: '20px'
+                    gap: '20px',
+                    flexDirection: isMobile ? 'column' : 'row'
                 }}
             >
                 {focusedLocation && (
