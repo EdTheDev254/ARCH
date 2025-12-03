@@ -1102,5 +1102,48 @@
       "/images/inostrancevia-2.png",
       "/images/inostrancevia-3.jpg"
     ]
+  },
+  {
+    "id": "dilophosaurus",
+    "name": "Dilophosaurus",
+    "scientificName": "Dilophosaurus wetherilli",
+    "era": "Early Jurassic",
+    "period": "Jurassic",
+    "location": "North America",
+    "description": "An early large theropod dinosaur known for its distinctive pair of rounded crests on its skull. Despite its portrayal in popular media, there is no evidence it had a neck frill or could spit venom. It was a swift and agile predator that likely hunted in packs. The crests were likely used for display and species recognition.",
+    "funFact": "Dilophosaurus is one of the earliest known large predatory dinosaurs, appearing about 193 million years ago during the Early Jurassic period.",
+    "discovery": {
+      "who": "Jesse Williams",
+      "when": "1940",
+      "where": "Kayenta Formation, Arizona, USA",
+      "age": "193 Million Years Ago"
+    },
+    "images": [
+      "/images/dilophosaurus-0.png",
+      "/images/dilophosaurus-1.png",
+      "/images/dilophosaurus-2.jpg",
+      "/images/dilophosaurus-3.png"
+    ]
+  },
+  {
+    "id": "amargasaurus",
+    "name": "Amargasaurus",
+    "scientificName": "Amargasaurus cazaui",
+    "era": "Early Cretaceous",
+    "period": "Cretaceous",
+    "location": "Argentina",
+    "description": "A distinctive sauropod dinosaur known for its remarkable double row of tall neural spines running along its neck and back. These spines may have supported a sail or formed a double crest. It was a relatively small sauropod, about 10 meters long, and likely used its unusual spines for display, thermoregulation, or defense.",
+    "funFact": "Amargasaurus had the most distinctive spines of any sauropod, with some neck spines reaching over 60 cm tall, creating a spectacular appearance.",
+    "discovery": {
+      "who": "José Bonaparte",
+      "when": "1991",
+      "where": "La Amarga Formation, Neuquén Province, Argentina",
+      "age": "130-125 Million Years Ago"
+    },
+    "images": [
+      "/images/amargasaurus-0.jpg",
+      "/images/amargasaurus-1.png",
+      "/images/amargasaurus-2.png"
+    ]
   }
 ]

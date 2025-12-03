@@ -26,8 +26,10 @@ export const speciesCoordinates = {
     "giganotosaurus": { lat: -42.5, lng: -69.5 }, // Patagonia, Argentina
     "sarcosuchus": { lat: 23.0, lng: 5.0 }, // Sahara Desert
     "kaprosuchus": { lat: 16.0, lng: 8.0 }, // Niger
+    "amargasaurus": { lat: -39.03, lng: -68.50 }, // La Amarga Formation, Argentina
 
     // Jurassic - North America
+    "dilophosaurus": { lat: 36.68, lng: -110.40 }, // Kayenta Formation, Arizona
     "stegosaurus": { lat: 39.68, lng: -105.19 }, // Dinosaur Ridge, Colorado
     "brachiosaurus": { lat: 39.08, lng: -108.58 }, // Colorado River Valley
     "allosaurus": { lat: 39.37, lng: -108.55 }, // Morrison Formation, Colorado
