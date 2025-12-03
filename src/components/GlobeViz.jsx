@@ -271,7 +271,7 @@ const GlobeViz = () => {
                             }}
                             style={{
                                 position: 'absolute',
-                                top: '20px',
+                                bottom: '20px',
                                 right: '20px',
                                 zIndex: 20,
                                 background: 'rgba(10,10,10,0.8)',
@@ -312,7 +312,7 @@ const GlobeViz = () => {
                     width: isMobile && focusedLocation ? '100%' : '350px',
                     maxWidth: isMobile && focusedLocation ? '100%' : '80%',
                     padding: '25px',
-                    paddingBottom: isMobile && focusedLocation ? '75px' : '25px',
+                    paddingBottom: isMobile && focusedLocation ? '100px' : '25px',
                     paddingLeft: '25px',
                     borderLeft: isMobile && focusedLocation ? 'none' : '2px solid #C5A059',
                     borderTop: isMobile && focusedLocation ? '2px solid #C5A059' : 'none',
