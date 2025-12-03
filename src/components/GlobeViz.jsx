@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import speciesData from '../data/species.json';
 import { getCoordinatesBySpeciesId, getCoordinatesForLocation } from '../utils/locationCoordinates';
 
@@ -20,7 +21,7 @@ const GlobeViz = () => {
 
             if (!coords) return null;
 
-            const baseUrl = import.meta.env.BASE_URL.slice(0, - 1);
+            const baseUrl = import.meta.env.BASE_URL.slice(0, -1);
 
             return {
                 name: species.name,
@@ -154,7 +155,7 @@ const GlobeViz = () => {
 
     // Auto-scroll to show globe and detail card on mobile when location is focused
     useEffect(() => {
-        if (isMobile && focusedLocation && containerRef.current) {
+        if (isMobile && focusedLocation && containerRef.current && !isInteracting) {
             setTimeout(() => {
                 const elementTop = containerRef.current.getBoundingClientRect().top + window.pageYOffset;
                 const offsetPosition = elementTop + 75; // Scroll down more to move content up
@@ -165,23 +166,27 @@ const GlobeViz = () => {
                 });
             }, 300);
         }
-    }, [focusedLocation, isMobile]);
+    }, [focusedLocation, isMobile, isInteracting]);
 
     return (
-        <div
+        <motion.div
+            layout
             ref={containerRef}
+            transition={{ duration: 0.5, type: "spring", bounce: 0 }}
             style={{
-                position: 'relative',
-                height: isMobile && focusedLocation ? 'auto' : 'min(600px, 60vh)',
-                width: '100%',
+                position: isMobile && isInteracting ? 'fixed' : 'relative',
+                top: isMobile && isInteracting ? 0 : 'auto',
+                left: isMobile && isInteracting ? 0 : 'auto',
+                height: isMobile && isInteracting ? '100vh' : (isMobile && focusedLocation ? 'auto' : 'min(600px, 60vh)'),
+                width: isMobile && isInteracting ? '100vw' : '100%',
                 backgroundColor: '#0a0a0a',
-                overflow: 'hidden',
+                overflowY: isMobile && isInteracting ? 'auto' : 'hidden',
                 display: 'flex',
-                flexDirection: isMobile && focusedLocation ? 'column' : 'row',
+                flexDirection: isMobile && (focusedLocation || isInteracting) ? 'column' : 'row',
                 justifyContent: 'center',
                 alignItems: 'center',
                 perspective: '1000px',
-                zIndex: 0
+                zIndex: isMobile && isInteracting ? 9999 : 0
             }}
         >
             {/* Globe Container */}
@@ -190,7 +195,7 @@ const GlobeViz = () => {
                 style={{
                     position: 'relative',
                     width: '100%',
-                    height: isMobile && focusedLocation ? '50vh' : '100%',
+                    height: isMobile && focusedLocation ? '50vh' : (isMobile && isInteracting ? '100vh' : '100%'),
                     minHeight: isMobile && focusedLocation ? '400px' : '100%',
                     flexShrink: 0
                 }}
@@ -213,7 +218,6 @@ const GlobeViz = () => {
                 {/* Interaction Overlay - Mobile Only */}
                 {isMobile && !isInteracting && (
                     <div
-                        onClick={() => setIsInteracting(true)}
                         style={{
                             position: 'absolute',
                             top: 0,
@@ -221,7 +225,6 @@ const GlobeViz = () => {
                             width: '100%',
                             height: '100%',
                             zIndex: 10,
-                            cursor: 'pointer',
                             display: 'flex',
                             justifyContent: 'center',
                             alignItems: 'center',
@@ -231,46 +234,58 @@ const GlobeViz = () => {
                         onMouseEnter={(e) => e.currentTarget.style.background = 'rgba(0,0,0,0.3)'}
                         onMouseLeave={(e) => e.currentTarget.style.background = 'rgba(0,0,0,0.1)'}
                     >
-                        <div style={{
-                            padding: '12px 24px',
-                            border: '1px solid #C5A059',
-                            background: 'rgba(10,10,10,0.8)',
-                            color: '#C5A059',
-                            fontFamily: 'Cinzel, serif',
-                            letterSpacing: '2px',
-                            fontSize: '14px',
-                            pointerEvents: 'none'
-                        }}>
+                        <div
+                            onClick={(e) => {
+                                e.stopPropagation();
+                                setIsInteracting(true);
+                            }}
+                            style={{
+                                padding: '12px 24px',
+                                border: '1px solid #C5A059',
+                                background: 'rgba(10,10,10,0.8)',
+                                color: '#C5A059',
+                                fontFamily: 'Cinzel, serif',
+                                letterSpacing: '2px',
+                                fontSize: '14px',
+                                pointerEvents: 'auto',
+                                cursor: 'pointer'
+                            }}
+                        >
                             TAP TO EXPLORE
                         </div>
                     </div>
                 )}
 
                 {/* Exit Interaction Button - Mobile Only */}
-                {isMobile && isInteracting && (
-                    <button
-                        onClick={(e) => {
-                            e.stopPropagation();
-                            setIsInteracting(false);
-                            setFocusedLocation(null);
-                        }}
-                        style={{
-                            position: 'absolute',
-                            top: '20px',
-                            right: '20px',
-                            zIndex: 20,
-                            background: 'rgba(10,10,10,0.8)',
-                            border: '1px solid #C5A059',
-                            color: '#C5A059',
-                            padding: '8px 16px',
-                            cursor: 'pointer',
-                            fontFamily: 'Cinzel, serif',
-                            fontSize: '12px'
-                        }}
-                    >
-                        EXIT EXPLORATION
-                    </button>
-                )}
+                <AnimatePresence>
+                    {isMobile && isInteracting && (
+                        <motion.button
+                            initial={{ opacity: 0, y: -20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: -20 }}
+                            onClick={(e) => {
+                                e.stopPropagation();
+                                setIsInteracting(false);
+                                setFocusedLocation(null);
+                            }}
+                            style={{
+                                position: 'absolute',
+                                top: '20px',
+                                right: '20px',
+                                zIndex: 20,
+                                background: 'rgba(10,10,10,0.8)',
+                                border: '1px solid #C5A059',
+                                color: '#C5A059',
+                                padding: '8px 16px',
+                                cursor: 'pointer',
+                                fontFamily: 'Cinzel, serif',
+                                fontSize: '12px'
+                            }}
+                        >
+                            EXIT EXPLORATION
+                        </motion.button>
+                    )}
+                </AnimatePresence>
 
                 <div
                     style={{
@@ -287,7 +302,8 @@ const GlobeViz = () => {
             </div>
 
             {/* Info Panel */}
-            <div
+            <motion.div
+                layout
                 style={{
                     position: isMobile && focusedLocation ? 'relative' : 'absolute',
                     bottom: isMobile && focusedLocation ? 'auto' : '60px',
@@ -300,60 +316,66 @@ const GlobeViz = () => {
                     borderTop: isMobile && focusedLocation ? '2px solid #C5A059' : 'none',
                     background: isMobile && focusedLocation ? '#0a0a0a' : 'linear-gradient(90deg, rgba(10,10,10,0.95), transparent)',
                     pointerEvents: isMobile && focusedLocation ? 'auto' : 'none',
-                    opacity: focusedLocation ? 1 : 0,
-                    transform: focusedLocation ? 'translateY(0)' : 'translateY(20px)',
-                    transition: 'all 0.5s ease',
                     display: focusedLocation ? 'flex' : 'none',
                     gap: '20px',
                     flexDirection: isMobile ? 'column' : 'row',
                     zIndex: 5
                 }}
             >
-                {focusedLocation && (
-                    <>
-                        {focusedLocation.image && (
-                            <div style={{
-                                width: '100px',
-                                height: '100px',
-                                flexShrink: 0,
-                                border: '2px solid #C5A059',
-                                overflow: 'hidden',
-                                backgroundColor: '#1a1a1a'
-                            }}>
-                                <img
-                                    src={focusedLocation.image}
-                                    alt={focusedLocation.name}
-                                    style={{
-                                        width: '100%',
-                                        height: '100%',
-                                        objectFit: 'cover'
-                                    }}
-                                />
+                <AnimatePresence mode="wait">
+                    {focusedLocation && (
+                        <motion.div
+                            key={focusedLocation.name}
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: 20 }}
+                            transition={{ duration: 0.3 }}
+                            style={{ display: 'flex', gap: '20px', flexDirection: isMobile ? 'column' : 'row', width: '100%' }}
+                        >
+                            {focusedLocation.image && (
+                                <div style={{
+                                    width: '100px',
+                                    height: '100px',
+                                    flexShrink: 0,
+                                    border: '2px solid #C5A059',
+                                    overflow: 'hidden',
+                                    backgroundColor: '#1a1a1a'
+                                }}>
+                                    <img
+                                        src={focusedLocation.image}
+                                        alt={focusedLocation.name}
+                                        style={{
+                                            width: '100%',
+                                            height: '100%',
+                                            objectFit: 'cover'
+                                        }}
+                                    />
+                                </div>
+                            )}
+                            <div style={{ flex: 1 }}>
+                                <div style={{ fontFamily: 'Cinzel, serif', color: '#C5A059', fontSize: '10px', letterSpacing: '2px', marginBottom: '8px' }}>
+                                    {focusedLocation.period}
+                                </div>
+                                <h2 style={{ fontSize: '26px', fontStyle: 'italic', margin: '0 0 4px 0', color: '#fff', fontFamily: 'Lato, sans-serif' }}>
+                                    {focusedLocation.name}
+                                </h2>
+                                <div style={{ fontSize: '12px', color: '#888', fontStyle: 'italic', marginBottom: '12px' }}>
+                                    {focusedLocation.scientificName}
+                                </div>
+                                <div style={{ fontFamily: 'Lato, sans-serif', fontSize: '12px', lineHeight: '1.6', color: '#bbb', marginBottom: '12px' }}>
+                                    {focusedLocation.desc}
+                                </div>
+                                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px', fontSize: '11px', color: '#aaa' }}>
+                                    <div>LOCATION: <span style={{ color: '#C5A059', fontWeight: 'bold' }}>{focusedLocation.location}</span></div>
+                                    <div>DISCOVERED: <span style={{ color: '#C5A059', fontWeight: 'bold' }}>{focusedLocation.year}</span></div>
+                                    <div style={{ gridColumn: '1 / -1' }}>BY: <span style={{ color: '#C5A059', fontWeight: 'bold' }}>{focusedLocation.discoverer}</span></div>
+                                </div>
                             </div>
-                        )}
-                        <div style={{ flex: 1 }}>
-                            <div style={{ fontFamily: 'Cinzel, serif', color: '#C5A059', fontSize: '10px', letterSpacing: '2px', marginBottom: '8px' }}>
-                                {focusedLocation.period}
-                            </div>
-                            <h2 style={{ fontSize: '26px', fontStyle: 'italic', margin: '0 0 4px 0', color: '#fff', fontFamily: 'Lato, sans-serif' }}>
-                                {focusedLocation.name}
-                            </h2>
-                            <div style={{ fontSize: '12px', color: '#888', fontStyle: 'italic', marginBottom: '12px' }}>
-                                {focusedLocation.scientificName}
-                            </div>
-                            <div style={{ fontFamily: 'Lato, sans-serif', fontSize: '12px', lineHeight: '1.6', color: '#bbb', marginBottom: '12px' }}>
-                                {focusedLocation.desc}
-                            </div>
-                            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px', fontSize: '11px', color: '#aaa' }}>
-                                <div>LOCATION: <span style={{ color: '#C5A059', fontWeight: 'bold' }}>{focusedLocation.location}</span></div>
-                                <div>DISCOVERED: <span style={{ color: '#C5A059', fontWeight: 'bold' }}>{focusedLocation.year}</span></div>
-                                <div style={{ gridColumn: '1 / -1' }}>BY: <span style={{ color: '#C5A059', fontWeight: 'bold' }}>{focusedLocation.discoverer}</span></div>
-                            </div>
-                        </div>
-                    </>
-                )}
-            </div>
-        </div>
+                        </motion.div>
+                    )}
+                </AnimatePresence>
+            </motion.div>
+        </motion.div>
     );
 };
 
