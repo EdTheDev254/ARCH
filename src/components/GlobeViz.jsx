@@ -31,6 +31,7 @@ const GlobeViz = () => {
                 year: species.discovery?.when || 'Unknown',
                 discoverer: species.discovery?.who || 'Unknown',
                 desc: species.description.substring(0, 150) + '...',
+                fullDesc: species.description,
                 scientificName: species.scientificName,
                 location: species.location || species.discovery?.where || 'Unknown',
                 image: species.images && species.images.length > 0 ? baseUrl + species.images[0] : null
@@ -363,7 +364,7 @@ const GlobeViz = () => {
                                     {focusedLocation.scientificName}
                                 </div>
                                 <div style={{ fontFamily: 'Lato, sans-serif', fontSize: '12px', lineHeight: '1.6', color: '#bbb', marginBottom: '12px' }}>
-                                    {focusedLocation.desc}
+                                    {isMobile ? focusedLocation.fullDesc : focusedLocation.desc}
                                 </div>
                                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px', fontSize: '11px', color: '#aaa' }}>
                                     <div>LOCATION: <span style={{ color: '#C5A059', fontWeight: 'bold' }}>{focusedLocation.location}</span></div>
