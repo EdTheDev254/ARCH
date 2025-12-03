@@ -41,6 +41,9 @@ export const speciesCoordinates = {
     "liopleurodon": { lat: 47.0, lng: 2.5 }, // France
     "dimorphodon": { lat: 50.72, lng: -2.44 }, // Dorset, UK
 
+    // Jurassic - Antarctica
+    "cryolophosaurus": { lat: -84.58, lng: 164.73 }, // Mount Kirkpatrick, Antarctica
+
     // Triassic
     "coelophysis": { lat: 36.28, lng: -106.5 }, // Ghost Ranch, New Mexico
     "plateosaurus": { lat: 51.0, lng: 10.0 }, // Germany

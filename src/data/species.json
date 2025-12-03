@@ -1145,5 +1145,25 @@
       "/images/amargasaurus-1.png",
       "/images/amargasaurus-2.png"
     ]
+  },
+  {
+    "id": "cryolophosaurus",
+    "name": "Cryolophosaurus",
+    "scientificName": "Cryolophosaurus ellioti",
+    "era": "Early Jurassic",
+    "period": "Jurassic",
+    "location": "Antarctica",
+    "description": "Known as the 'Elvisaurus' or 'frozen crested lizard', this was a medium-sized theropod with a distinctive pompadour-like crest running perpendicular to its skull. It's the first carnivorous dinosaur discovered in Antarctica and one of the few dinosaurs found on that continent. At the time, Antarctica was much warmer and part of the supercontinent Gondwana.",
+    "funFact": "Cryolophosaurus earned the nickname 'Elvisaurus' because its unusual forward-curling head crest resembled Elvis Presley's iconic hairstyle.",
+    "discovery": {
+      "who": "William Hammer",
+      "when": "1991",
+      "where": "Mount Kirkpatrick, Transantarctic Mountains, Antarctica",
+      "age": "194-188 Million Years Ago"
+    },
+    "images": [
+      "/images/cryolophosaurus-0.png",
+      "/images/cryolophosaurus-1.png"
+    ]
   }
 ]
