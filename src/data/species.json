@@ -177,7 +177,8 @@
     "images": [
       "/images/stegosaurus-0.png",
       "/images/stegosaurus-2.png"
-    ]
+    ],
+    "model": "/ModelsGLB/Stegosaurus.glb"
   },
   {
     "id": "brachiosaurus",
@@ -1017,7 +1018,8 @@
       "/images/kaprosuchus-1.png",
       "/images/kaprosuchus-2.png",
       "/images/kaprosuchus-3.png"
-    ]
+    ],
+    "model": "/ModelsGLB/Kaprosuchus.glb"
   },
   {
     "id": "edaphosaurus",

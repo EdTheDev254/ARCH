@@ -2,19 +2,43 @@ import React, { useEffect, useRef, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import speciesData from '../data/species.json';
 import { getCoordinatesBySpeciesId, getCoordinatesForLocation } from '../utils/locationCoordinates';
+import ModelViewer from './ModelViewer';
 
 const GlobeViz = () => {
     const globeEl = useRef();
     const containerRef = useRef();
     const globeContainerRef = useRef();
     const [focusedLocation, setFocusedLocation] = useState(null);
+    const [show3DViewer, setShow3DViewer] = useState(true);
     const [scale, setScale] = useState(1);
     const [isLoaded, setIsLoaded] = useState(false);
     const [isInteracting, setIsInteracting] = useState(false);
     const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
 
+    // Seeded random number generator (consistent for same seed)
+    const seededRandom = (seed) => {
+        const x = Math.sin(seed) * 10000;
+        return x - Math.floor(x);
+    };
+
+    // Get today's date as a seed (changes daily)
+    const getDailySeed = () => {
+        const today = new Date();
+        return today.getFullYear() * 10000 + (today.getMonth() + 1) * 100 + today.getDate();
+    };
+
+    // Shuffle array using seeded random
+    const shuffleWithSeed = (array, seed) => {
+        const shuffled = [...array];
+        for (let i = shuffled.length - 1; i > 0; i--) {
+            const j = Math.floor(seededRandom(seed + i) * (i + 1));
+            [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+        }
+        return shuffled;
+    };
+
     // Transform species data to include precise coordinates
-    const mapData = speciesData
+    const allMapData = speciesData
         .map(species => {
             const coords = getCoordinatesBySpeciesId(species.id) ||
                 getCoordinatesForLocation(species.location || species.discovery?.where);
@@ -34,10 +58,28 @@ const GlobeViz = () => {
                 fullDesc: species.description,
                 scientificName: species.scientificName,
                 location: species.location || species.discovery?.where || 'Unknown',
-                image: species.images && species.images.length > 0 ? baseUrl + species.images[0] : null
+                image: species.images && species.images.length > 0 ? baseUrl + species.images[0] : null,
+                model: species.model || null
             };
         })
         .filter(Boolean);
+
+    // Daily random selection of species (12 species max, at least 1 with 3D model)
+    const mapData = React.useMemo(() => {
+        const seed = getDailySeed();
+        const speciesWithModels = allMapData.filter(s => s.model);
+        const speciesWithoutModels = allMapData.filter(s => !s.model);
+
+        // Always include at least 1 species with 3D model (if any exist)
+        const shuffledModels = shuffleWithSeed(speciesWithModels, seed);
+        const shuffledOthers = shuffleWithSeed(speciesWithoutModels, seed + 1);
+
+        // Take 1-2 with models, rest without (total 12)
+        const modelsToShow = shuffledModels.slice(0, Math.min(2, shuffledModels.length));
+        const othersToShow = shuffledOthers.slice(0, 12 - modelsToShow.length);
+
+        return [...modelsToShow, ...othersToShow];
+    }, [allMapData]);
 
     useEffect(() => {
         const initGlobe = () => {
@@ -61,14 +103,25 @@ const GlobeViz = () => {
                 .htmlElement(d => {
                     const el = document.createElement('div');
                     el.innerHTML = '●';
-                    el.style.color = '#C5A059';
-                    el.style.fontSize = '16px';
+                    // Red color for species with 3D models, gold for others
+                    const hasModel = !!d.model;
+                    el.style.color = hasModel ? '#ff4444' : '#C5A059';
+                    el.style.fontSize = hasModel ? '20px' : '16px';
                     el.style.cursor = 'pointer';
                     el.style.pointerEvents = 'auto';
                     el.style.userSelect = 'none';
-                    el.style.textShadow = '0 0 8px #C5A059';
-                    el.onclick = () => {
-                        setFocusedLocation(d);
+                    el.style.textShadow = hasModel ? '0 0 12px #ff4444' : '0 0 8px #C5A059';
+                    el.onclick = (e) => {
+                        e.stopPropagation();
+                        console.log('Clicked marker data:', d);
+                        console.log('Model path:', d.model);
+                        // Reset 3D viewer visibility when selecting new species
+                        setShow3DViewer(true);
+                        // Use functional update to ensure state changes properly
+                        setFocusedLocation(prev => {
+                            // Force a new object reference even if same species
+                            return { ...d, _clickTime: Date.now() };
+                        });
                         world.pointOfView({ lat: d.lat, lng: d.lng, altitude: isMobile ? 2.5 : 1.8 }, 1200);
                         resetAutoRotateTimer();
                     };
@@ -88,7 +141,7 @@ const GlobeViz = () => {
                 .pointAltitude(0.005)
                 .pointLabel('')
                 .onPointClick(d => {
-                    setFocusedLocation(d);
+                    setFocusedLocation(prev => ({ ...d, _clickTime: Date.now() }));
                     world.pointOfView({ lat: d.lat, lng: d.lng, altitude: isMobile ? 2.5 : 1.8 }, 1200);
                     resetAutoRotateTimer();
                 })
@@ -190,15 +243,45 @@ const GlobeViz = () => {
                 zIndex: isMobile && isInteracting ? 9999 : 0
             }}
         >
+            {/* Legend tooltip for markers - hide when 3D viewer is open */}
+            {!isMobile && !(focusedLocation && focusedLocation.model && show3DViewer) && (
+                <div style={{
+                    position: 'absolute',
+                    bottom: '20px',
+                    right: '20px',
+                    zIndex: 10,
+                    background: 'rgba(10,10,10,0.85)',
+                    border: '1px solid rgba(197, 160, 89, 0.3)',
+                    borderRadius: '8px',
+                    padding: '12px 16px',
+                    fontFamily: 'Lato, sans-serif',
+                    fontSize: '11px',
+                    color: '#888'
+                }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '6px' }}>
+                        <span style={{ color: '#ff4444', fontSize: '14px', textShadow: '0 0 8px #ff4444' }}>●</span>
+                        <span>3D Model Available</span>
+                    </div>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                        <span style={{ color: '#C5A059', fontSize: '12px', textShadow: '0 0 6px #C5A059' }}>●</span>
+                        <span>Discovery Location</span>
+                    </div>
+                </div>
+            )}
             {/* Globe Container */}
-            <div
+            <motion.div
                 ref={globeContainerRef}
+                animate={{
+                    width: !isMobile && focusedLocation && focusedLocation.model && show3DViewer ? '50%' : '100%'
+                }}
+                transition={{ duration: 0.5, ease: 'easeInOut' }}
                 style={{
                     position: 'relative',
                     width: '100%',
                     height: isMobile && focusedLocation ? '50vh' : (isMobile && isInteracting ? '100vh' : '100%'),
                     minHeight: isMobile && focusedLocation ? '400px' : '100%',
-                    flexShrink: 0
+                    flexShrink: 0,
+                    position: 'relative'
                 }}
             >
                 <div
@@ -300,7 +383,53 @@ const GlobeViz = () => {
                 >
                     <div ref={globeEl} />
                 </div>
-            </div>
+            </motion.div>
+
+            {/* 3D Model Viewer - Desktop Only */}
+            <AnimatePresence>
+                {!isMobile && focusedLocation && focusedLocation.model && show3DViewer && (
+                    <motion.div
+                        initial={{ opacity: 0, width: 0 }}
+                        animate={{ opacity: 1, width: '50%' }}
+                        exit={{ opacity: 0, width: 0 }}
+                        transition={{ duration: 0.5, ease: 'easeInOut' }}
+                        style={{
+                            height: '100%',
+                            position: 'relative',
+                            overflow: 'hidden'
+                        }}
+                    >
+                        {/* Close Button - only closes 3D viewer, keeps card */}
+                        <button
+                            onClick={() => setShow3DViewer(false)}
+                            style={{
+                                position: 'absolute',
+                                top: '15px',
+                                right: '15px',
+                                zIndex: 20,
+                                background: 'rgba(10,10,10,0.8)',
+                                border: '1px solid #C5A059',
+                                color: '#C5A059',
+                                width: '32px',
+                                height: '32px',
+                                borderRadius: '50%',
+                                cursor: 'pointer',
+                                fontFamily: 'Lato, sans-serif',
+                                fontSize: '18px',
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'center'
+                            }}
+                        >
+                            ✕
+                        </button>
+                        <ModelViewer
+                            modelPath={focusedLocation.model}
+                            speciesName={focusedLocation.name}
+                        />
+                    </motion.div>
+                )}
+            </AnimatePresence>
 
             {/* Info Panel */}
             <motion.div
@@ -324,6 +453,32 @@ const GlobeViz = () => {
                     zIndex: 5
                 }}
             >
+                {/* Close button for info card */}
+                {focusedLocation && (
+                    <button
+                        onClick={() => setFocusedLocation(null)}
+                        style={{
+                            position: 'absolute',
+                            top: '10px',
+                            right: '10px',
+                            background: 'rgba(10,10,10,0.8)',
+                            border: '1px solid #C5A059',
+                            color: '#C5A059',
+                            width: '24px',
+                            height: '24px',
+                            borderRadius: '50%',
+                            cursor: 'pointer',
+                            fontSize: '14px',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            pointerEvents: 'auto',
+                            zIndex: 10
+                        }}
+                    >
+                        ✕
+                    </button>
+                )}
                 <AnimatePresence mode="wait">
                     {focusedLocation && (
                         <motion.div
